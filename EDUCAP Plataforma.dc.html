@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F1EEE7;font-family:'Instrument Sans',sans-serif;color:#0E1D2B;-webkit-font-smoothing:antialiased}
+a{color:#0E1D2B;text-decoration:none}a:hover{color:#B97914}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+</style>
+</helmet>
+<div style="display:flex;min-height:100vh" data-screen-label="Plataforma empresa">
+<aside style="width:232px;background:#0E1D2B;color:#B9C6D0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;box-sizing:border-box;padding:20px 14px;flex-shrink:0">
+  <a href="EDUCAP%20Landing.dc.html" style="display:flex;align-items:center;gap:10px;padding:6px 10px;margin-bottom:26px;color:#F7F4EE" style-hover="color:#E89B2D">
+    <div style="width:28px;height:28px;background:#E89B2D;border-radius:8px;display:grid;place-items:center;color:#0E1D2B;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px">E</div>
+    <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;letter-spacing:.02em">EDUCAP</span>
+  </a>
+  <div style="display:flex;flex-direction:column;gap:4px">
+    <sc-for list="{{ navItems }}" as="nv" hint-placeholder-count="4">
+      <button onClick="{{ nv.ir }}" style="{{ nv.estilo }}"><span style="width:20px;text-align:center">{{ nv.icono }}</span>{{ nv.nombre }}</button>
+    </sc-for>
+  </div>
+  <div style="margin-top:auto;background:#16324A;border-radius:12px;padding:14px">
+    <div style="font-size:12px;color:#8FA3B3;margin-bottom:4px">Actualización anual</div>
+    <div style="font-size:13.5px;font-weight:700;color:#F7F4EE;line-height:1.4">12 guardias vencen en los próximos 30 días</div>
+    <button onClick="{{ irDashboard }}" style="margin-top:10px;width:100%;background:#E89B2D;border:none;border-radius:8px;padding:8px;font-weight:700;font-size:13px;color:#0E1D2B;cursor:pointer;font-family:'Instrument Sans',sans-serif">Ver vencimientos</button>
+  </div>
+</aside>
+
+<main style="flex:1;min-width:0">
+  <header style="background:#fff;border-bottom:1px solid #E4DFD4;padding:14px 28px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:20">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;flex:1">{{ tituloVista }}</div>
+    <div style="font-size:13px;color:#5C6B78;background:#F1EEE7;border-radius:99px;padding:7px 14px;font-weight:600">{{ empresa }}</div>
+    <div style="width:36px;height:36px;border-radius:99px;background:#0E1D2B;color:#E89B2D;display:grid;place-items:center;font-weight:800;font-size:14px">RM</div>
+  </header>
+
+  <sc-if value="{{ esDashboard }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:26px 28px;display:flex;flex-direction:column;gap:22px" data-screen-label="Dashboard cumplimiento">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+      <div style="background:#0E1D2B;color:#F7F4EE;border-radius:16px;padding:22px;display:flex;gap:18px;align-items:center">
+        <div style="width:84px;height:84px;border-radius:99px;background:conic-gradient(#E89B2D 0 338deg,#2C4257 338deg 360deg);display:grid;place-items:center;flex-shrink:0">
+          <div style="width:62px;height:62px;border-radius:99px;background:#0E1D2B;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;color:#E89B2D">94%</div>
+        </div>
+        <div><div style="font-weight:700;font-size:15px">Cumplimiento global</div><div style="font-size:12.5px;color:#8FA3B3;margin-top:4px;line-height:1.4">142 de 151 elementos con DC-3 vigente</div></div>
+      </div>
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+          <div style="font-size:13px;color:#5C6B78;font-weight:600">{{ k.nombre }}</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;margin:6px 0 4px;color:{{ k.color }}">{{ k.valor }}</div>
+          <div style="font-size:12.5px;color:#5C6B78">{{ k.nota }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px">
+      <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:18px"><div style="font-weight:700;font-size:15px">Finalización semanal de microlecciones</div><div style="font-size:12.5px;color:#5C6B78">últimas 8 semanas</div></div>
+        <div style="display:flex;align-items:end;gap:10px;height:150px">
+          <sc-for list="{{ barras }}" as="b" hint-placeholder-count="8">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:end;gap:6px;height:100%">
+              <div style="background:{{ b.color }};border-radius:6px 6px 3px 3px;height:{{ b.h }}"></div>
+              <div style="font-size:11px;color:#8898A5;text-align:center">{{ b.sem }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:14px;font-size:12.5px;color:#5C6B78"><span><span style="display:inline-block;width:10px;height:10px;background:#E89B2D;border-radius:3px;margin-right:6px"></span>Contenido personalizado</span><span><span style="display:inline-block;width:10px;height:10px;background:#C9D3DB;border-radius:3px;margin-right:6px"></span>Promedio industria (genérico)</span></div>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+        <div style="font-weight:700;font-size:15px;margin-bottom:14px">⚠ Vencen pronto — actualización anual</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ vencimientos }}" as="v" hint-placeholder-count="4">
+            <button onClick="{{ v.abrir }}" style="display:flex;align-items:center;gap:12px;background:#FBF9F4;border:1px solid #EFEAE0;border-radius:10px;padding:10px 12px;cursor:pointer;font-family:'Instrument Sans',sans-serif;text-align:left;width:100%;box-sizing:border-box">
+              <div style="width:32px;height:32px;border-radius:99px;background:#EDE7DA;display:grid;place-items:center;font-weight:700;font-size:12px;color:#7A5A1E;flex-shrink:0">{{ v.ini }}</div>
+              <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:13.5px">{{ v.nombre }}</div><div style="font-size:12px;color:#5C6B78">{{ v.sitio }}</div></div>
+              <div style="font-size:12px;font-weight:700;color:{{ v.color }};white-space:nowrap">{{ v.dias }}</div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+      <div style="font-weight:700;font-size:15px;margin-bottom:16px">Competencia real por módulo (EC0573)</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px 32px">
+        <sc-for list="{{ modulos }}" as="m" hint-placeholder-count="6">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px"><span style="font-weight:600">{{ m.nombre }}</span><span style="color:#5C6B78">{{ m.pct }}% aprobación</span></div>
+            <div style="height:8px;background:#EFEAE0;border-radius:99px;overflow:hidden"><div style="height:100%;width:{{ m.w }};background:{{ m.color }};border-radius:99px"></div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ esTrabajadores }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:26px 28px" data-screen-label="Trabajadores">
+    <sc-if value="{{ sinSeleccion }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;overflow:hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid #EFEAE0">
+        <div style="font-weight:700;font-size:15px">151 trabajadores activos</div>
+        <div style="display:flex;gap:8px">
+          <sc-for list="{{ filtros }}" as="f" hint-placeholder-count="3"><button onClick="{{ f.aplicar }}" style="{{ f.estilo }}">{{ f.nombre }}</button></sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:2.2fr 1.4fr 1.2fr 1fr 1.1fr;padding:10px 22px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8898A5;border-bottom:1px solid #EFEAE0">
+        <span>Trabajador</span><span>Sitio</span><span>Avance del temario</span><span>Competencia</span><span>DC-3</span>
+      </div>
+      <sc-for list="{{ trabajadores }}" as="t" hint-placeholder-count="6">
+        <button onClick="{{ t.abrir }}" style="display:grid;grid-template-columns:2.2fr 1.4fr 1.2fr 1fr 1.1fr;align-items:center;padding:13px 22px;border:none;border-bottom:1px solid #F3F0E9;background:#fff;cursor:pointer;font-family:'Instrument Sans',sans-serif;text-align:left;width:100%;box-sizing:border-box" style-hover="background:#FBF9F4">
+          <span style="display:flex;align-items:center;gap:12px"><span style="width:32px;height:32px;border-radius:99px;background:#0E1D2B;color:#E89B2D;display:grid;place-items:center;font-weight:700;font-size:12px">{{ t.ini }}</span><span><span style="display:block;font-weight:700;font-size:14px">{{ t.nombre }}</span><span style="display:block;font-size:12px;color:#5C6B78">{{ t.puesto }}</span></span></span>
+          <span style="font-size:13.5px;color:#41505C">{{ t.sitio }}</span>
+          <span style="display:flex;align-items:center;gap:8px"><span style="flex:1;max-width:90px;height:6px;background:#EFEAE0;border-radius:99px;overflow:hidden;display:block"><span style="display:block;height:100%;width:{{ t.avanceW }};background:#E89B2D;border-radius:99px"></span></span><span style="font-size:12.5px;color:#5C6B78">{{ t.avance }}%</span></span>
+          <span style="font-size:13px;font-weight:700;color:{{ t.compColor }}">{{ t.competencia }}</span>
+          <span><span style="{{ t.badgeEstilo }}">{{ t.dc3 }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    </sc-if>
+    <sc-if value="{{ conSeleccion }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Expediente individual">
+      <button onClick="{{ cerrarExpediente }}" style="background:none;border:none;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:14px;color:#5C6B78;cursor:pointer;padding:0;margin-bottom:16px">← Volver a la lista</button>
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:#0E1D2B;color:#F7F4EE;border-radius:16px;padding:24px">
+            <div style="display:flex;gap:14px;align-items:center;margin-bottom:16px">
+              <div style="width:52px;height:52px;border-radius:99px;background:#E89B2D;color:#0E1D2B;display:grid;place-items:center;font-weight:800;font-size:19px;font-family:'Bricolage Grotesque',sans-serif">{{ sel.ini }}</div>
+              <div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px">{{ sel.nombre }}</div><div style="font-size:13px;color:#8FA3B3">{{ sel.puesto }} · {{ sel.sitio }}</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px">
+              <div style="background:#16324A;border-radius:10px;padding:10px"><div style="color:#8FA3B3;font-size:11.5px">CURP</div><div style="font-weight:600">MEGJ88****HJC</div></div>
+              <div style="background:#16324A;border-radius:10px;padding:10px"><div style="color:#8FA3B3;font-size:11.5px">Ingreso</div><div style="font-weight:600">03 mar 2026</div></div>
+              <div style="background:#16324A;border-radius:10px;padding:10px"><div style="color:#8FA3B3;font-size:11.5px">DC-3 vigente</div><div style="font-weight:600;color:#7BC99E">Sí · vence feb 2027</div></div>
+              <div style="background:#16324A;border-radius:10px;padding:10px"><div style="color:#8FA3B3;font-size:11.5px">Horas acreditadas</div><div style="font-weight:600">14.5 h</div></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+            <div style="font-weight:700;font-size:14.5px;margin-bottom:12px">Anclas de personalización</div>
+            <div style="font-size:12.5px;color:#5C6B78;margin-bottom:12px;line-height:1.5">Del diagnóstico inicial. La IA construye analogías y ejemplos sobre estos ganchos — nunca toca el contenido normativo núcleo.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ sel.anclas }}" as="a" hint-placeholder-count="4"><span style="background:#EDE7DA;color:#7A5A1E;border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:600">{{ a }}</span></sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:14px"><div style="font-weight:700;font-size:15px">Temario obligatorio · avance</div><div style="font-size:13px;color:#5C6B78">{{ sel.avance }}% completado</div></div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ sel.temario }}" as="tm" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:#FBF9F4;border:1px solid #EFEAE0;border-radius:10px">
+                  <span style="width:26px;height:26px;border-radius:99px;display:grid;place-items:center;font-size:13px;font-weight:800;background:{{ tm.bg }};color:{{ tm.fg }};flex-shrink:0">{{ tm.icono }}</span>
+                  <span style="flex:1;font-size:13.5px;font-weight:600">{{ tm.nombre }}</span>
+                  <span style="font-size:12.5px;color:#5C6B78">{{ tm.detalle }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+            <div style="font-weight:700;font-size:15px;margin-bottom:6px">Confianza vs. competencia</div>
+            <div style="font-size:12.5px;color:#5C6B78;margin-bottom:14px">Dónde cree saber pero falla — ahí se concentra el refuerzo espaciado.</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ sel.brechas }}" as="br" hint-placeholder-count="3">
+                <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;align-items:center;font-size:13px">
+                  <span style="font-weight:600">{{ br.tema }}</span>
+                  <span style="display:flex;align-items:center;gap:6px"><span style="width:64px;height:6px;background:#EFEAE0;border-radius:99px;overflow:hidden;display:inline-block"><span style="display:block;height:100%;width:{{ br.confW }};background:#8FA3B3"></span></span><span style="color:#5C6B78;font-size:12px">conf. {{ br.conf }}%</span></span>
+                  <span style="display:flex;align-items:center;gap:6px"><span style="width:64px;height:6px;background:#EFEAE0;border-radius:99px;overflow:hidden;display:inline-block"><span style="display:block;height:100%;width:{{ br.compW }};background:{{ br.color }}"></span></span><span style="color:#5C6B78;font-size:12px">comp. {{ br.comp }}%</span></span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ esDc3 }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:26px 28px;display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start" data-screen-label="DC-3 y SIRCE">
+    <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;overflow:hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid #EFEAE0">
+        <div><div style="font-weight:700;font-size:15px">Cola de emisión DC-3</div><div style="font-size:12.5px;color:#5C6B78;margin-top:2px">Agente capacitador externo · Reg. STPS EDUCAP-ACE-0117</div></div>
+        <button onClick="{{ emitirTodas }}" style="{{ emitirEstilo }}">{{ emitirLabel }}</button>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1.6fr 1fr 1.3fr;padding:10px 22px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8898A5;border-bottom:1px solid #EFEAE0">
+        <span>Trabajador</span><span>Curso acreditado</span><span>Horas</span><span>Estado</span>
+      </div>
+      <sc-for list="{{ constancias }}" as="c" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:2fr 1.6fr 1fr 1.3fr;align-items:center;padding:13px 22px;border-bottom:1px solid #F3F0E9;font-size:13.5px">
+          <span style="font-weight:700">{{ c.nombre }}</span>
+          <span style="color:#41505C">{{ c.curso }}</span>
+          <span style="color:#5C6B78">{{ c.horas }}</span>
+          <span><span style="{{ c.estilo }}">{{ c.estado }}</span></span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="background:#fff;border:2px dashed #C9BFA9;border-radius:16px;padding:24px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8898A5;margin-bottom:14px">Vista previa · Formato DC-3 (STPS)</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;margin-bottom:2px">Constancia de competencias o de habilidades laborales</div>
+        <div style="font-size:12px;color:#5C6B78;margin-bottom:16px">Formato DC-3 · Norma: LFT Art. 153-V</div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+          <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Trabajador</span><span style="font-weight:700">Javier Mendoza García</span></div>
+          <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Ocupación (SINCO)</span><span style="font-weight:700">Guardia de seguridad 5311</span></div>
+          <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Curso</span><span style="font-weight:700;text-align:right">Vigilancia y protección<br>(EC0573) · 20 h</span></div>
+          <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Periodo</span><span style="font-weight:700">02 may – 28 jun 2026</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#5C6B78">Agente capacitador</span><span style="font-weight:700">EDUCAP-ACE-0117</span></div>
+        </div>
+      </div>
+      <div style="background:#0E1D2B;color:#F7F4EE;border-radius:16px;padding:22px">
+        <div style="font-weight:700;font-size:14.5px;margin-bottom:12px">Sincronización SIRCE</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+          <div style="display:flex;justify-content:space-between"><span style="color:#8FA3B3">Última carga de listas DC-4</span><span style="font-weight:600">{{ sirceUltima }}</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#8FA3B3">Constancias en el periodo</span><span style="font-weight:600">{{ sirceTotal }}</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#8FA3B3">Estado</span><span style="font-weight:700;color:#7BC99E">{{ sirceEstado }}</span></div>
+        </div>
+        <div style="margin-top:14px;background:#16324A;border-radius:10px;padding:12px;font-size:12.5px;color:#B9C6D0;line-height:1.5">El expediente auditable por trabajador queda listo para inspección STPS o verificación SSPC en un clic.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ esDocs }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:26px 28px;display:grid;grid-template-columns:1fr 1.6fr;gap:16px;align-items:start" data-screen-label="Manuales y protocolos">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="background:#fff;border:2px dashed #C9BFA9;border-radius:16px;padding:32px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:14px;background:#EDE7DA;display:grid;place-items:center;margin:0 auto 14px;font-size:22px">📄</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:6px">Sube tus manuales y protocolos</div>
+        <div style="font-size:13px;color:#5C6B78;line-height:1.5;margin-bottom:16px">PDF, DOCX · La IA los convierte en microlecciones alineadas a tus procedimientos. Aislamiento total por cliente; tus datos nunca entrenan modelos.</div>
+        <button onClick="{{ subirDoc }}" style="background:#0E1D2B;color:#F7F4EE;border:none;border-radius:9px;padding:11px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Instrument Sans',sans-serif">Seleccionar archivo</button>
+      </div>
+      <div style="background:#DCEFE6;border:1px solid #BFE0D0;border-radius:16px;padding:18px;display:flex;gap:12px">
+        <span style="font-size:18px">🔒</span>
+        <div style="font-size:12.5px;color:#1E4D3B;line-height:1.55"><strong>Seguridad por diseño.</strong> Cifrado en tránsito y reposo, aislamiento por cliente, cumplimiento LFPDPPP y ruta a SOC 2 Tipo I. Tus protocolos jamás salen de tu instancia.</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;overflow:hidden">
+      <div style="padding:18px 22px;border-bottom:1px solid #EFEAE0;font-weight:700;font-size:15px">Documentos de la empresa</div>
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+        <div style="display:flex;gap:14px;align-items:center;padding:16px 22px;border-bottom:1px solid #F3F0E9">
+          <div style="width:40px;height:40px;border-radius:10px;background:#F1EEE7;display:grid;place-items:center;font-size:17px;flex-shrink:0">{{ d.icono }}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;font-size:14px">{{ d.nombre }}</div>
+            <div style="font-size:12.5px;color:#5C6B78;margin-top:2px">{{ d.meta }}</div>
+            <sc-if value="{{ d.listo }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+                <sc-for list="{{ d.temas }}" as="tg" hint-placeholder-count="3"><span style="background:#F1EEE7;border-radius:99px;padding:4px 10px;font-size:11.5px;font-weight:600;color:#5C6B78">{{ tg }}</span></sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <span style="{{ d.estilo }}">{{ d.estado }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;empresa&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Protec Occidente S.A. de C.V.&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Datos&quot;}}">
+class Component extends DCLogic {
+  state = {
+    vista: 'dashboard', sel: null, filtro: 'Todos', emitiendo: 0,
+    constanciasPend: ['Luis Ortega Ríos', 'Carmen Delgado P.', 'Óscar Fuentes L.'],
+    docsExtra: []
+  };
+  subir() {
+    const nombre = 'Protocolo de rondines nocturnos v3.pdf';
+    this.setState(s => ({ docsExtra: [...s.docsExtra, { nombre, listo: false }] }));
+    setTimeout(() => this.setState(s => ({ docsExtra: s.docsExtra.map(d => ({ ...d, listo: true })) })), 2200);
+  }
+  emitir() {
+    if (this.state.emitiendo) return;
+    this.setState({ emitiendo: 1 });
+    setTimeout(() => this.setState({ emitiendo: 2 }), 1600);
+    setTimeout(() => this.setState({ emitiendo: 3 }), 3200);
+  }
+  renderVals() {
+    const S = this.state;
+    const badge = (tipo) => ({
+      ok: 'background:#DCEFE6;color:#1E6B4F;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700',
+      warn: 'background:#FBEDD3;color:#9A6A10;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700',
+      bad: 'background:#F8DEDA;color:#A3372A;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700',
+      proc: 'background:#E3ECF3;color:#33586F;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;animation:pulse 1.2s infinite'
+    })[tipo];
+    const base = [
+      { nombre: 'Javier Mendoza García', puesto: 'Guardia · turno matutino', sitio: 'Corporativo Torre Sur', avance: 86, competencia: 'Alta', dc3: 'Vigente', anclas: ['⚽ Fútbol · Chivas', '👨‍👧 Papá de 2', '🎵 Banda MS', 'Ex ayudante de albañil'] },
+      { nombre: 'María Torres Ávila', puesto: 'Guardia · recepción', sitio: 'Planta Logística Norte', avance: 92, competencia: 'Alta', dc3: 'Vigente', anclas: ['🍳 Cocina', '📺 Series policiacas', 'Ex cajera de tienda'] },
+      { nombre: 'Luis Ortega Ríos', puesto: 'Guardia · rondines', sitio: 'Corporativo Torre Sur', avance: 64, competencia: 'Media', dc3: 'Vence 30 días', anclas: ['🚚 Ex-chofer de carga', '🥊 Box', 'Papá de 1'] },
+      { nombre: 'Carmen Delgado P.', puesto: 'Supervisora de turno', sitio: 'Centro Comercial Álamos', avance: 78, competencia: 'Alta', dc3: 'Vence 30 días', anclas: ['📖 Lectura', '🐕 Adiestra perros'] },
+      { nombre: 'Óscar Fuentes Lara', puesto: 'Guardia · nocturno', sitio: 'Planta Logística Norte', avance: 41, competencia: 'Baja', dc3: 'Sin constancia', anclas: ['🎮 Videojuegos', '⚽ Atlas', 'Primer empleo formal'] },
+      { nombre: 'Rosa Jiménez Vega', puesto: 'Guardia · accesos', sitio: 'Centro Comercial Álamos', avance: 88, competencia: 'Alta', dc3: 'Vigente', anclas: ['🎵 Cumbia', 'Mamá de 3', 'Ex mesera'] },
+      { nombre: 'Pedro Salinas Cruz', puesto: 'Guardia · caseta vehicular', sitio: 'Corporativo Torre Sur', avance: 57, competencia: 'Media', dc3: 'Vence 30 días', anclas: ['🚗 Mecánica', '🎣 Pesca'] },
+      { nombre: 'Ana Beltrán Mora', puesto: 'Guardia · recepción', sitio: 'Planta Logística Norte', avance: 71, competencia: 'Media', dc3: 'Vigente', anclas: ['💄 Estilista los fines', '📱 TikTok'] }
+    ];
+    const iniciales = (n) => n.split(' ').slice(0, 2).map(p => p[0]).join('');
+    const filtrados = base.filter(t => S.filtro === 'Todos' ? true : S.filtro === 'En riesgo' ? t.dc3 !== 'Vigente' : t.competencia === 'Baja' || t.avance < 60);
+    const compColor = { Alta: '#1E6B4F', Media: '#9A6A10', Baja: '#A3372A' };
+    const nav = [
+      { id: 'dashboard', nombre: 'Cumplimiento', icono: '◉' },
+      { id: 'trabajadores', nombre: 'Trabajadores', icono: '👥' },
+      { id: 'dc3', nombre: 'DC-3 y SIRCE', icono: '🗎' },
+      { id: 'docs', nombre: 'Manuales (IA)', icono: '⬆' }
+    ];
+    const titulos = { dashboard: 'Panel de cumplimiento', trabajadores: S.sel ? 'Expediente del trabajador' : 'Trabajadores', dc3: 'Constancias DC-3 · SIRCE', docs: 'Manuales y protocolos' };
+    const emitLabels = ['Emitir 3 pendientes y cargar a SIRCE', 'Emitiendo constancias…', 'Cargando a SIRCE…', '✓ 3 emitidas y cargadas'];
+    const estadoConst = S.emitiendo === 0 ? { txt: 'Pendiente', st: badge('warn') } : S.emitiendo === 3 ? { txt: '✓ En SIRCE', st: badge('ok') } : { txt: S.emitiendo === 1 ? 'Emitiendo…' : 'Cargando…', st: badge('proc') };
+    const docsBase = [
+      { nombre: 'Manual de control de accesos 2026.pdf', meta: '48 páginas · subido 12 may 2026', listo: true, icono: '📕', temas: ['Control de accesos', 'Gafetes y registro', 'Visitantes'] },
+      { nombre: 'Protocolo de uso de la fuerza.docx', meta: '22 páginas · subido 12 may 2026 · plantilla validada por humano ✓', listo: true, icono: '📘', temas: ['Uso legítimo de la fuerza', 'Escalamiento', 'Reporte de incidentes'] },
+      { nombre: 'Consignas Torre Sur.pdf', meta: '14 páginas · subido 28 may 2026', listo: true, icono: '📗', temas: ['Consignas por puesto', 'Rondines'] }
+    ];
+    const docs = [...docsBase, ...S.docsExtra.map(d => ({ nombre: d.nombre, meta: '31 páginas · subido hoy', listo: d.listo, icono: '📙', temas: ['Rondines nocturnos', 'Bitácora digital', 'Alertamiento'] }))].map(d => ({ ...d, estado: d.listo ? '✓ 6 microlecciones' : 'Procesando…', estilo: d.listo ? badge('ok') : badge('proc') }));
+    return {
+      empresa: this.props.empresa ?? 'Protec Occidente S.A. de C.V.',
+      tituloVista: titulos[S.vista],
+      esDashboard: S.vista === 'dashboard', esTrabajadores: S.vista === 'trabajadores', esDc3: S.vista === 'dc3', esDocs: S.vista === 'docs',
+      irDashboard: () => this.setState({ vista: 'dashboard' }),
+      navItems: nav.map(n => ({ ...n, ir: () => this.setState({ vista: n.id, sel: null }), estilo: 'display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;border:none;cursor:pointer;font-family:Instrument Sans,sans-serif;font-size:14px;font-weight:600;text-align:left;width:100%;' + (S.vista === n.id ? 'background:#E89B2D;color:#0E1D2B' : 'background:transparent;color:#B9C6D0') })),
+      kpis: [
+        { nombre: 'Vencen en 30 días', valor: '12', nota: 'actualización anual obligatoria', color: '#A3372A' },
+        { nombre: 'Finalización de cursos', valor: '87%', nota: 'vs. ~30% del e-learning genérico', color: '#1E6B4F' },
+        { nombre: 'Horas de gestión ahorradas', valor: '38 h', nota: 'este mes · DC-3 y expedientes', color: '#0E1D2B' }
+      ],
+      barras: [62, 58, 71, 66, 78, 74, 83, 87].map((v, i) => ({ sem: 'S' + (i + 1), h: Math.round(v * 1.4) + 'px', color: i % 2 === 0 ? '#C9D3DB' : '#E89B2D' })).map((b, i) => i < 8 ? [{ ...b }] : b).flat().map((b, i) => ({ ...b, sem: 'S' + (i + 1) })),
+      vencimientos: [
+        { nombre: 'Luis Ortega Ríos', sitio: 'Torre Sur · rondines', dias: '12 días', color: '#A3372A' },
+        { nombre: 'Carmen Delgado P.', sitio: 'Álamos · supervisora', dias: '18 días', color: '#A3372A' },
+        { nombre: 'Pedro Salinas Cruz', sitio: 'Torre Sur · caseta', dias: '23 días', color: '#9A6A10' },
+        { nombre: 'Rosa Jiménez Vega', sitio: 'Álamos · accesos', dias: '29 días', color: '#9A6A10' }
+      ].map(v => ({ ...v, ini: iniciales(v.nombre), abrir: () => this.setState({ vista: 'trabajadores', sel: base.find(b => b.nombre.startsWith(v.nombre.split(' ')[0])) || base[2] }) })),
+      modulos: [
+        { nombre: 'Control de accesos', pct: 91 }, { nombre: 'Uso legítimo de la fuerza', pct: 74 },
+        { nombre: 'Primeros auxilios', pct: 82 }, { nombre: 'Manejo de crisis y multitudes', pct: 68 },
+        { nombre: 'Marco jurídico LFSP', pct: 79 }, { nombre: 'Reporte de incidentes', pct: 88 }
+      ].map(m => ({ ...m, w: m.pct + '%', color: m.pct >= 80 ? '#1E6B4F' : m.pct >= 70 ? '#E89B2D' : '#A3372A' })),
+      filtros: ['Todos', 'En riesgo', 'Baja competencia'].map(f => ({ nombre: f, aplicar: () => this.setState({ filtro: f }), estilo: 'padding:7px 14px;border-radius:99px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:Instrument Sans,sans-serif;border:1.5px solid ' + (S.filtro === f ? '#0E1D2B;background:#0E1D2B;color:#F7F4EE' : '#E4DFD4;background:#fff;color:#5C6B78') })),
+      trabajadores: filtrados.map(t => ({ ...t, ini: iniciales(t.nombre), avanceW: t.avance + '%', compColor: compColor[t.competencia], badgeEstilo: badge(t.dc3 === 'Vigente' ? 'ok' : t.dc3 === 'Sin constancia' ? 'bad' : 'warn'), abrir: () => this.setState({ sel: t }) })),
+      sinSeleccion: !S.sel, conSeleccion: !!S.sel,
+      cerrarExpediente: () => this.setState({ sel: null }),
+      sel: S.sel ? { ...S.sel, ini: iniciales(S.sel.nombre),
+        temario: [
+          { nombre: 'Marco jurídico de la seguridad privada', detalle: 'Aprobado · 96%', icono: '✓', bg: '#DCEFE6', fg: '#1E6B4F' },
+          { nombre: 'Control de accesos', detalle: 'Aprobado · 91%', icono: '✓', bg: '#DCEFE6', fg: '#1E6B4F' },
+          { nombre: 'Uso legítimo de la fuerza', detalle: 'En refuerzo espaciado', icono: '↻', bg: '#FBEDD3', fg: '#9A6A10' },
+          { nombre: 'Primeros auxilios', detalle: 'En curso · lección 4 de 6', icono: '▶', bg: '#E3ECF3', fg: '#33586F' },
+          { nombre: 'Manejo de crisis y multitudes', detalle: 'Programado · jul 2026', icono: '·', bg: '#F1EEE7', fg: '#8898A5' }
+        ],
+        brechas: [
+          { tema: 'Registro de visitantes', conf: 90, comp: 88 },
+          { tema: 'Niveles de uso de la fuerza', conf: 85, comp: 52 },
+          { tema: 'RCP y posición de recuperación', conf: 40, comp: 71 }
+        ].map(b => ({ ...b, confW: b.conf + '%', compW: b.comp + '%', color: b.comp >= 70 ? '#1E6B4F' : '#A3372A' }))
+      } : null,
+      constancias: [
+        { nombre: 'Javier Mendoza García', curso: 'Vigilancia y protección (EC0573)', horas: '20 h', estado: '✓ En SIRCE', estilo: badge('ok') },
+        { nombre: 'María Torres Ávila', curso: 'Vigilancia y protección (EC0573)', horas: '20 h', estado: '✓ En SIRCE', estilo: badge('ok') },
+        { nombre: 'Rosa Jiménez Vega', curso: 'Actualización anual LFSP', horas: '12 h', estado: '✓ En SIRCE', estilo: badge('ok') },
+        ...S.constanciasPend.map(n => ({ nombre: n, curso: 'Actualización anual LFSP', horas: '12 h', estado: estadoConst.txt, estilo: estadoConst.st }))
+      ],
+      emitirTodas: () => this.emitir(),
+      emitirLabel: emitLabels[S.emitiendo],
+      emitirEstilo: 'border:none;border-radius:9px;padding:11px 18px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:Instrument Sans,sans-serif;' + (S.emitiendo === 3 ? 'background:#DCEFE6;color:#1E6B4F' : S.emitiendo ? 'background:#EDE7DA;color:#7A5A1E' : 'background:#E89B2D;color:#0E1D2B'),
+      sirceUltima: S.emitiendo === 3 ? 'hoy, hace un momento' : 'hace 3 días',
+      sirceTotal: S.emitiendo === 3 ? '46' : '43',
+      sirceEstado: '● Conectado',
+      subirDoc: () => this.subir(),
+      docs
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E1D2B;font-family:'Instrument Sans',sans-serif;color:#F7F4EE;-webkit-font-smoothing:antialiased}
+a{color:#F7F4EE;text-decoration:none}a:hover{color:#E89B2D}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div data-screen-label="App del guardia">
+<nav style="display:flex;align-items:center;gap:24px;padding:18px 32px;border-bottom:1px solid #1D3A52">
+  <a href="EDUCAP%20Landing.dc.html" style="display:flex;align-items:center;gap:10px">
+    <div style="width:28px;height:28px;background:#E89B2D;border-radius:8px;display:grid;place-items:center;color:#0E1D2B;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px">E</div>
+    <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px">EDUCAP</span>
+  </a>
+  <span style="font-size:14px;color:#8FA3B3;flex:1">Experiencia del trabajador · prototipo simulado</span>
+  <a href="EDUCAP%20Plataforma.dc.html" style="font-size:14px;font-weight:600;padding:9px 16px;border:1.5px solid #3A5268;border-radius:8px;color:#B9C6D0">Ver plataforma de la empresa →</a>
+</nav>
+
+<div style="display:grid;grid-template-columns:360px 1fr;gap:48px;max-width:1180px;margin:0 auto;padding:48px 32px;align-items:start">
+  <aside style="position:sticky;top:32px">
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;line-height:1.15;margin:0 0 10px">El recorrido de Javier, guardia en Torre Sur</h1>
+    <p style="font-size:14.5px;line-height:1.6;color:#8FA3B3;margin:0 0 26px;text-wrap:pretty">Sin correo corporativo, sin computadora. Todo pasa en su celular, empezando por WhatsApp. Haz clic en cada paso o avanza desde el teléfono.</p>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <sc-for list="{{ pasos }}" as="p" hint-placeholder-count="6">
+        <button onClick="{{ p.ir }}" style="{{ p.estilo }}">
+          <span style="{{ p.numEstilo }}">{{ p.num }}</span>
+          <span style="flex:1;text-align:left"><span style="display:block;font-weight:700;font-size:14.5px">{{ p.titulo }}</span><span style="display:block;font-size:12.5px;opacity:.7;margin-top:2px;line-height:1.4">{{ p.desc }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin-top:24px;background:#16324A;border-radius:12px;padding:16px;font-size:13px;line-height:1.6;color:#B9C6D0"><strong style="color:#E89B2D">La ciencia detrás:</strong> {{ notaCiencia }}</div>
+  </aside>
+
+  <div style="display:flex;justify-content:center">
+  <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" title="" hint-size="390px,844px">
+    <div style="height:100%;background:#F7F4EE;display:flex;flex-direction:column;overflow:hidden;font-family:'Instrument Sans',sans-serif;color:#0E1D2B">
+
+      <sc-if value="{{ esWhats }}" hint-placeholder-val="{{ true }}">
+      <div style="height:100%;display:flex;flex-direction:column;background:#EFE7DD" data-screen-label="WhatsApp">
+        <div style="background:#075E54;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px">
+          <span style="font-size:16px">←</span>
+          <div style="width:36px;height:36px;border-radius:99px;background:#E89B2D;color:#0E1D2B;display:grid;place-items:center;font-weight:800;font-size:15px;font-family:'Bricolage Grotesque',sans-serif">E</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:15px">EDUCAP Capacitación <span style="font-size:12px">✓</span></div><div style="font-size:12px;opacity:.8">Cuenta de empresa verificada</div></div>
+          <span style="font-size:16px">⋮</span>
+        </div>
+        <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto">
+          <div style="align-self:center;background:#DCEFF5;border-radius:8px;padding:5px 12px;font-size:11.5px;color:#33586F">🔒 Protec Occidente te inscribió a tu capacitación obligatoria</div>
+          <div style="align-self:flex-start;background:#fff;border-radius:12px 12px 12px 3px;padding:11px 14px;max-width:82%;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .4s ease both">
+            <div style="font-size:14px;line-height:1.5">¡Hola Javier! 👋 Soy tu capacitador de <strong>EDUCAP</strong>. Tu empresa te inscribió al curso obligatorio de seguridad privada (LFSP).</div>
+            <div style="font-size:10.5px;color:#8898A5;text-align:right;margin-top:4px">10:02</div>
+          </div>
+          <div style="align-self:flex-start;background:#fff;border-radius:12px 12px 12px 3px;padding:11px 14px;max-width:82%;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .4s .15s ease both">
+            <div style="font-size:14px;line-height:1.5">Primero un diagnóstico de <strong>10 minutos</strong> para conocerte: qué sabes ya y qué te gusta. Así tus lecciones serán de 3 a 5 minutos, hechas para ti. 🎧 Puedes escucharlas en audio.</div>
+            <div style="font-size:10.5px;color:#8898A5;text-align:right;margin-top:4px">10:02</div>
+          </div>
+          <div style="align-self:flex-start;background:#fff;border-radius:12px 12px 12px 3px;padding:11px 14px;max-width:82%;box-shadow:0 1px 1px rgba(0,0,0,.08);animation:pop .4s .3s ease both">
+            <div style="font-size:14px;line-height:1.5">Cuando termines el curso, tu constancia <strong>DC-3</strong> se genera sola y le llega a tu jefe. ¿Empezamos?</div>
+            <div style="font-size:10.5px;color:#8898A5;text-align:right;margin-top:4px">10:03</div>
+          </div>
+          <sc-if value="{{ respondioWhats }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-end;background:#D9FDD3;border-radius:12px 12px 3px 12px;padding:11px 14px;max-width:82%;box-shadow:0 1px 1px rgba(0,0,0,.08)">
+            <div style="font-size:14px">Va, empezamos 💪</div>
+            <div style="font-size:10.5px;color:#7A9471;text-align:right;margin-top:4px">10:04 ✓✓</div>
+          </div>
+          </sc-if>
+        </div>
+        <div style="padding:12px 14px 16px;display:flex;flex-direction:column;gap:8px">
+          <button onClick="{{ empezarDiag }}" style="background:#25D366;color:#fff;border:none;border-radius:99px;padding:14px;font-weight:700;font-size:15px;cursor:pointer;font-family:'Instrument Sans',sans-serif;box-shadow:0 4px 12px rgba(37,211,102,.35)">▶ Comenzar diagnóstico</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ esDiag }}" hint-placeholder-val="{{ false }}">
+      <div style="height:100%;display:flex;flex-direction:column;padding:18px" data-screen-label="Diagnóstico">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="flex:1;height:7px;background:#E4DFD4;border-radius:99px;overflow:hidden"><div style="height:100%;width:{{ diagProg }};background:#E89B2D;border-radius:99px;transition:width .4s"></div></div>
+          <span style="font-size:12.5px;font-weight:700;color:#5C6B78">{{ diagPaso }}</span>
+        </div>
+        <sc-if value="{{ esQ0 }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B97914;margin-bottom:8px">Lo que ya sabes</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:21px;font-weight:800;line-height:1.25;margin:0 0 16px">Llega una persona sin gafete a tu punto de control. ¿Cuál es tu primera acción?</h2>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ q0Opciones }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.elegir }}" style="text-align:left;background:#fff;border:1.5px solid #E4DFD4;border-radius:12px;padding:14px;font-size:14.5px;line-height:1.4;cursor:pointer;font-family:'Instrument Sans',sans-serif" style-hover="border-color:#E89B2D">{{ o.txt }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ esQ1 }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B97914;margin-bottom:8px">Confianza vs. competencia</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;line-height:1.25;margin:0 0 8px">¿Qué tan seguro estás de tu respuesta?</h2>
+          <p style="font-size:13.5px;color:#5C6B78;margin:0 0 18px;line-height:1.5">No hay respuesta mala. Esto nos dice dónde reforzarte — sobre todo donde crees saber pero no.</p>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ q1Opciones }}" as="o" hint-placeholder-count="3">
+              <button onClick="{{ o.elegir }}" style="text-align:left;background:#fff;border:1.5px solid #E4DFD4;border-radius:12px;padding:14px;font-size:15px;cursor:pointer;font-family:'Instrument Sans',sans-serif" style-hover="border-color:#E89B2D">{{ o.txt }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ esQ2 }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B97914;margin-bottom:8px">Tus intereses</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;line-height:1.25;margin:0 0 8px">¿Qué te gusta o has vivido?</h2>
+          <p style="font-size:13.5px;color:#5C6B78;margin:0 0 16px;line-height:1.5">Elige todo lo que aplique. Con esto explicamos cada tema con TUS ejemplos.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:auto">
+            <sc-for list="{{ intereses }}" as="i" hint-placeholder-count="8">
+              <button onClick="{{ i.alternar }}" style="{{ i.estilo }}">{{ i.txt }}</button>
+            </sc-for>
+          </div>
+          <button onClick="{{ terminarDiag }}" style="{{ btnPrimario }}">Ver mi plan personalizado</button>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ esPlan }}" hint-placeholder-val="{{ false }}">
+      <div style="height:100%;display:flex;flex-direction:column;padding:18px;overflow-y:auto" data-screen-label="Plan personalizado">
+        <div style="background:#0E1D2B;color:#F7F4EE;border-radius:16px;padding:20px;margin-bottom:14px">
+          <div style="font-size:12px;color:#8FA3B3;margin-bottom:4px">Diagnóstico completo ✓</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;line-height:1.2">Tu plan, Javier: 6 lecciones cortas, hechas para ti</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+            <sc-for list="{{ anclasElegidas }}" as="a" hint-placeholder-count="3"><span style="background:#16324A;border-radius:99px;padding:5px 11px;font-size:12px;font-weight:600;color:#E89B2D">{{ a }}</span></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:14px">
+          <sc-for list="{{ plan }}" as="l" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E4DFD4;border-radius:12px;padding:12px 14px">
+              <span style="width:30px;height:30px;border-radius:99px;display:grid;place-items:center;font-weight:800;font-size:13px;background:{{ l.bg }};color:{{ l.fg }};flex-shrink:0">{{ l.icono }}</span>
+              <span style="flex:1"><span style="display:block;font-weight:700;font-size:13.5px">{{ l.nombre }}</span><span style="display:block;font-size:12px;color:#5C6B78">{{ l.meta }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+        <button onClick="{{ empezarLeccion }}" style="{{ btnPrimario }}">Empezar lección 1 · 4 min</button>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ esLeccion }}" hint-placeholder-val="{{ false }}">
+      <div style="height:100%;display:flex;flex-direction:column;padding:18px;overflow-y:auto" data-screen-label="Microlección">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <span style="font-size:12.5px;font-weight:700;color:#B97914">CONTROL DE ACCESOS · LECCIÓN 1 DE 6</span>
+          <span style="background:#EDE7DA;border-radius:99px;padding:4px 10px;font-size:11.5px;font-weight:700;color:#7A5A1E">⏱ 4 min</span>
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:800;line-height:1.2;margin:0 0 12px">{{ lecTitulo }}</h2>
+        <button style="align-self:flex-start;background:#fff;border:1.5px solid #E4DFD4;border-radius:99px;padding:8px 14px;font-size:12.5px;font-weight:700;color:#41505C;cursor:pointer;font-family:'Instrument Sans',sans-serif;margin-bottom:14px">🔊 Escuchar en audio · 3:40</button>
+        <div style="background:#fff;border:1px solid #E4DFD4;border-radius:14px;padding:18px;font-size:15px;line-height:1.65;color:#33424E;margin-bottom:12px;text-wrap:pretty">{{ lecTexto }}</div>
+        <div style="background:#FBEDD3;border-radius:12px;padding:14px;font-size:13.5px;line-height:1.55;color:#7A5A1E;margin-bottom:auto"><strong>La regla de oro:</strong> identificar → registrar → autorizar. Siempre en ese orden, sin excepciones — ni para el "conocido de siempre".</div>
+        <div style="font-size:11.5px;color:#8898A5;margin:10px 0">Contenido normativo de plantilla validada por humanos · la IA personalizó solo los ejemplos</div>
+        <button onClick="{{ irEvaluacion }}" style="{{ btnPrimario }}">Continuar → una pregunta rápida</button>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ esEval }}" hint-placeholder-val="{{ false }}">
+      <div style="height:100%;display:flex;flex-direction:column;padding:18px;overflow-y:auto" data-screen-label="Evaluación">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1E6B4F;margin-bottom:8px">Práctica de recuperación</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;line-height:1.3;margin:0 0 16px">Un proveedor que entra a diario llega sin gafete y te dice: "ya me conoces". ¿Qué haces primero?</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+          <sc-for list="{{ evalOpciones }}" as="o" hint-placeholder-count="3">
+            <button onClick="{{ o.elegir }}" style="{{ o.estilo }}">{{ o.txt }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ hayFeedback }}" hint-placeholder-val="{{ false }}">
+          <div style="{{ feedbackEstilo }}">
+            <div style="font-weight:800;font-size:14.5px;margin-bottom:6px">{{ feedbackTitulo }}</div>
+            <div style="font-size:13.5px;line-height:1.6">{{ feedbackTexto }}</div>
+          </div>
+          <button onClick="{{ terminar }}" style="{{ btnPrimario }}">Terminar lección ✓</button>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ esFin }}" hint-placeholder-val="{{ false }}">
+      <div style="height:100%;display:flex;flex-direction:column;padding:18px;overflow-y:auto" data-screen-label="Evidencia y DC-3">
+        <div style="text-align:center;padding:22px 0 14px">
+          <div style="width:70px;height:70px;border-radius:99px;background:#DCEFE6;display:grid;place-items:center;margin:0 auto 12px;font-size:30px;color:#1E6B4F;animation:pop .5s ease both">✓</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px">¡Lección 1 completada!</div>
+          <div style="font-size:13.5px;color:#5C6B78;margin-top:6px">La evidencia ya está en tu expediente de competencias.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E4DFD4;border-radius:14px;padding:16px;margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px"><span style="font-weight:700">Avance hacia tu DC-3</span><span style="color:#5C6B78">12.5 de 20 horas</span></div>
+          <div style="height:9px;background:#EFEAE0;border-radius:99px;overflow:hidden"><div style="height:100%;width:62%;background:linear-gradient(90deg,#E89B2D,#F2AC44);border-radius:99px"></div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:auto">
+          <div style="display:flex;gap:12px;background:#fff;border:1px solid #E4DFD4;border-radius:12px;padding:13px 14px;font-size:13px;line-height:1.5"><span>🧠</span><span><strong>Repaso programado:</strong> este tema reaparece en 3 días con otra pregunta. Así se queda en tu memoria, no solo en el examen.</span></div>
+          <div style="display:flex;gap:12px;background:#fff;border:1px solid #E4DFD4;border-radius:12px;padding:13px 14px;font-size:13px;line-height:1.5"><span>📄</span><span><strong>Tu jefe ya lo ve:</strong> tu avance se refleja en tiempo real en el panel de Protec Occidente.</span></div>
+        </div>
+        <button onClick="{{ reiniciar }}" style="background:#fff;border:1.5px solid #0E1D2B;border-radius:12px;padding:14px;font-weight:700;font-size:14.5px;cursor:pointer;font-family:'Instrument Sans',sans-serif;margin-bottom:8px">↺ Repetir el recorrido</button>
+        <a href="EDUCAP%20Plataforma.dc.html" style="display:block;text-align:center;background:#0E1D2B;color:#F7F4EE;border-radius:12px;padding:14px;font-weight:700;font-size:14.5px" style-hover="background:#1D3A52;color:#F7F4EE">Verlo como jefe de seguridad →</a>
+      </div>
+      </sc-if>
+
+    </div>
+  </x-import>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { paso: 0, respondioWhats: false, q: 0, sel: [], resp: null };
+  renderVals() {
+    const S = this.state;
+    const btnPrimario = 'background:#E89B2D;color:#0E1D2B;border:none;border-radius:12px;padding:15px;font-weight:800;font-size:15px;cursor:pointer;font-family:Instrument Sans,sans-serif;box-shadow:0 2px 0 #B97914;width:100%';
+    const pasosDef = [
+      { titulo: 'Invitación por WhatsApp', desc: 'Sin apps que instalar ni contraseñas. El canal que ya usa todos los días.' },
+      { titulo: 'Diagnóstico · 10 min', desc: 'Qué sabe ya (confianza vs. competencia) y qué le interesa: las anclas.' },
+      { titulo: 'Plan personalizado', desc: '6 microlecciones de 3–5 min, ordenadas por sus brechas reales.' },
+      { titulo: 'Microlección', desc: 'El protocolo explicado con SUS ejemplos. Audio disponible.' },
+      { titulo: 'Práctica de recuperación', desc: 'Termina con pregunta, no con resumen. Feedback inmediato.' },
+      { titulo: 'Evidencia y DC-3', desc: 'Cada interacción suma horas y evidencia al expediente auditable.' }
+    ];
+    const notas = [
+      'la entrega por WhatsApp elimina la fricción #1 del e-learning frontline: el login.',
+      'medimos confianza además de aciertos — donde cree saber pero falla es donde más se refuerza.',
+      'el orden lo dictan las brechas del diagnóstico, no un índice genérico.',
+      'mismo objetivo EC0573 para todos; la IA solo personaliza analogías y ejemplos. El contenido normativo viene de plantillas validadas.',
+      'recordar activamente (testing effect) fija más que releer. Cada lección termina preguntando.',
+      'las horas y reactivos quedan alineados al estándar — el expediente está listo para inspección.'
+    ];
+    const interesesDef = ['⚽ Chivas', '⚽ Atlas', '🥊 Box', '🎵 Banda', '🎵 Cumbia', '🎮 Videojuegos', '🚚 Fui chofer', '🍳 Cocino', '👨‍👧 Tengo hijos', '🔧 Mecánica'];
+    const elegidos = S.sel.length ? S.sel : ['⚽ Chivas', '👨‍👧 Tengo hijos'];
+    const conChofer = elegidos.includes('🚚 Fui chofer') && !elegidos.includes('⚽ Chivas');
+    const lec = conChofer ? {
+      titulo: 'Tu punto de control es un retén de carretera',
+      texto: 'Cuando eras chofer, en un retén nadie pasaba sin detenerse: alto total, documentos en mano, revisión, y solo entonces la señal de avanzar. Tu caseta funciona exactamente igual. Toda persona — empleado, proveedor o visita — se detiene, se identifica y queda registrada antes de avanzar. El retén no funciona "a veces": funciona siempre, o no funciona.'
+    } : {
+      titulo: 'Tu punto de control es el filtro del Estadio Akron',
+      texto: 'Piensa en un partido de Chivas. Nadie entra al Akron sin pasar el filtro: boleto escaneado, revisión rápida, y cada quien por la puerta de su zona. Da igual si es su primer partido o si va cada jornada. Tu punto de control es ese filtro: toda persona se identifica, queda registrada y entra solo por donde está autorizada. El filtro no descansa cuando el estadio está lleno — ahí es cuando más importa.'
+    };
+    const evalDef = [
+      { txt: 'Lo dejo pasar y registro su entrada después, para no atrasar su ruta.', ok: false },
+      { txt: 'Lo detengo con cortesía, verifico identidad, registro y pido autorización antes de dejarlo avanzar.', ok: true },
+      { txt: 'Le llamo a mi supervisor para que decida él, mientras el proveedor espera adentro.', ok: false }
+    ];
+    const irPaso = (n) => this.setState({ paso: n, ...(n <= 1 ? { q: n === 0 ? S.q : 0 } : {}), ...(n <= 4 ? { resp: n === 4 ? S.resp : null } : {}) });
+    return {
+      btnPrimario,
+      notaCiencia: notas[S.paso],
+      pasos: pasosDef.map((p, i) => ({
+        ...p, num: String(i + 1),
+        ir: () => this.setState({ paso: i, resp: i < 5 ? null : S.resp, q: i === 1 ? 0 : S.q }),
+        estilo: 'display:flex;gap:13px;align-items:flex-start;border-radius:12px;padding:12px 14px;cursor:pointer;font-family:Instrument Sans,sans-serif;border:1px solid ' + (S.paso === i ? '#E89B2D;background:#16324A;color:#F7F4EE' : 'transparent;background:transparent;color:#8FA3B3'),
+        numEstilo: 'width:26px;height:26px;border-radius:99px;display:grid;place-items:center;font-weight:800;font-size:12.5px;flex-shrink:0;' + (S.paso > i ? 'background:#1E6B4F;color:#fff' : S.paso === i ? 'background:#E89B2D;color:#0E1D2B' : 'background:#1D3A52;color:#8FA3B3')
+      })),
+      esWhats: S.paso === 0, esDiag: S.paso === 1, esPlan: S.paso === 2, esLeccion: S.paso === 3, esEval: S.paso === 4, esFin: S.paso === 5,
+      respondioWhats: S.respondioWhats,
+      empezarDiag: () => { this.setState({ respondioWhats: true }); setTimeout(() => this.setState({ paso: 1, q: 0 }), 700); },
+      diagProg: (33 * (S.q + 1)) + '%',
+      diagPaso: 'Pregunta ' + (S.q + 1) + ' de 3',
+      esQ0: S.q === 0, esQ1: S.q === 1, esQ2: S.q === 2,
+      q0Opciones: [
+        'Le pido que espere, verifico su identidad y registro su visita',
+        'Lo dejo pasar si dice a quién viene a ver',
+        'Le pido que regrese otro día con gafete',
+        'No estoy seguro'
+      ].map(txt => ({ txt, elegir: () => this.setState({ q: 1 }) })),
+      q1Opciones: ['🎲 La verdad, adiviné', '🤔 Creo que sí es', '💪 Totalmente seguro'].map(txt => ({ txt, elegir: () => this.setState({ q: 2 }) })),
+      intereses: interesesDef.map(txt => ({
+        txt,
+        alternar: () => this.setState(s => ({ sel: s.sel.includes(txt) ? s.sel.filter(x => x !== txt) : [...s.sel, txt] })),
+        estilo: 'border-radius:99px;padding:10px 15px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:Instrument Sans,sans-serif;border:1.5px solid ' + (S.sel.includes(txt) ? '#E89B2D;background:#FBEDD3;color:#7A5A1E' : '#E4DFD4;background:#fff;color:#41505C')
+      })),
+      terminarDiag: () => this.setState({ paso: 2 }),
+      anclasElegidas: elegidos,
+      plan: [
+        { nombre: 'Control de accesos', meta: '4 min · empieza aquí: tu brecha más importante', icono: '▶', bg: '#E89B2D', fg: '#0E1D2B' },
+        { nombre: 'Uso legítimo de la fuerza', meta: '5 min · detectamos exceso de confianza aquí', icono: '2', bg: '#F1EEE7', fg: '#5C6B78' },
+        { nombre: 'Registro e informes', meta: '3 min', icono: '3', bg: '#F1EEE7', fg: '#5C6B78' },
+        { nombre: 'Primeros auxilios básicos', meta: '5 min', icono: '4', bg: '#F1EEE7', fg: '#5C6B78' },
+        { nombre: 'Manejo de crisis', meta: '4 min', icono: '5', bg: '#F1EEE7', fg: '#5C6B78' },
+        { nombre: 'Marco jurídico LFSP', meta: '4 min · ya dominas parte: será más corto', icono: '6', bg: '#F1EEE7', fg: '#5C6B78' }
+      ],
+      empezarLeccion: () => this.setState({ paso: 3 }),
+      lecTitulo: lec.titulo,
+      lecTexto: lec.texto,
+      irEvaluacion: () => this.setState({ paso: 4, resp: null }),
+      evalOpciones: evalDef.map((o, i) => ({
+        txt: o.txt,
+        elegir: () => S.resp === null && this.setState({ resp: i }),
+        estilo: 'text-align:left;border-radius:12px;padding:14px;font-size:14px;line-height:1.45;cursor:pointer;font-family:Instrument Sans,sans-serif;border:1.5px solid ' + (S.resp === null ? '#E4DFD4;background:#fff' : o.ok ? '#1E6B4F;background:#DCEFE6' : S.resp === i ? '#A3372A;background:#F8DEDA;color:#6E2018' : '#EFEAE0;background:#FBF9F4;color:#8898A5')
+      })),
+      hayFeedback: S.resp !== null,
+      feedbackEstilo: 'border-radius:12px;padding:15px;margin-bottom:12px;animation:pop .35s ease both;' + (S.resp !== null && evalDef[S.resp].ok ? 'background:#DCEFE6;color:#1E4D3B' : 'background:#FBEDD3;color:#7A5A1E'),
+      feedbackTitulo: S.resp !== null && evalDef[S.resp].ok ? '✓ Exacto' : 'Casi — mira por qué',
+      feedbackTexto: S.resp !== null && evalDef[S.resp].ok
+        ? 'Identificar → registrar → autorizar, en ese orden. La cortesía no está peleada con el protocolo: el filtro del Akron también saluda, pero nadie pasa sin boleto.'
+        : 'Recuerda la regla de oro: identificar → registrar → autorizar, SIEMPRE en ese orden. Dejarlo pasar "de confianza" rompe el filtro justo donde más se explota. Este tema te lo volveré a preguntar en 3 días.',
+      terminar: () => this.setState({ paso: 5 }),
+      reiniciar: () => this.setState({ paso: 0, respondioWhats: false, q: 0, sel: [], resp: null })
+    };
+  }
+}
+</script>
+</body>
+</html>
