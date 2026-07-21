@@ -9,7 +9,7 @@ Repositorio **exclusivo** para publicar los bocetos navegables de EDUCAP y compa
 Una vez desplegado, el sitio queda en:
 
 ```
-https://yair0024.github.io/educap-prototipo/
+https://yair0024.github.io/validacion_seguridad/
 ```
 
 Ese es el enlace que se le envía al cliente. Abre un índice con las tres vistas, enlazadas entre sí.
