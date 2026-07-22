@@ -1,6 +1,6 @@
-# EDUCAP · Prototipo UX
+# Hábil · Prototipo UX
 
-Repositorio **exclusivo** para publicar los bocetos navegables de EDUCAP y compartirlos con el cliente para validación, **antes** de terminar el desarrollo de la plataforma real.
+Repositorio **exclusivo** para publicar los bocetos navegables de Hábil y compartirlos con el cliente para validación, **antes** de terminar el desarrollo de la plataforma real.
 
 > No contiene código ni documentación del producto: solo las maquetas de interfaz exportadas desde la herramienta de diseño. El proyecto real vive en un repositorio aparte.
 
@@ -19,9 +19,9 @@ Ese es el enlace que se le envía al cliente. Abre un índice con las tres vista
 | Archivo | Vista |
 | --- | --- |
 | `index.html` | Índice / menú de los bocetos |
-| `EDUCAP Landing.dc.html` | Landing (sitio público) |
-| `EDUCAP Plataforma.dc.html` | Plataforma (panel administrativo) |
-| `EDUCAP Guardia.dc.html` | App del guardia (móvil) |
+| `Habil Landing.dc.html` | Landing (sitio público) |
+| `Habil Plataforma.dc.html` | Plataforma (panel administrativo del cliente) |
+| `Habil Guardia.dc.html` | WhatsApp del trabajador (experiencia del guardia) |
 | `support.js` | Runtime que necesitan los bocetos exportados |
 
 ## Cómo se despliega

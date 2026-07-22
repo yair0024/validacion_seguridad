@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E1D2B;font-family:'Instrument Sans',sans-serif;color:#F7F4EE;-webkit-font-smoothing:antialiased}
+a{color:#F7F4EE;text-decoration:none}a:hover{color:#E89B2D}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div data-screen-label="WhatsApp del trabajador">
+<nav style="display:flex;align-items:center;gap:24px;padding:18px 32px;border-bottom:1px solid #1D3A52">
+  <a href="Habil%20Landing.dc.html" style="display:flex;align-items:center;gap:10px">
+    <div style="width:28px;height:28px;background:#E89B2D;border-radius:8px;display:grid;place-items:center;color:#0E1D2B;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px">H</div>
+    <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px">Hábil</span>
+  </a>
+  <span style="font-size:14px;color:#8FA3B3;flex:1">Experiencia del trabajador · todo ocurre en WhatsApp</span>
+  <a href="Habil%20Plataforma.dc.html" style="font-size:14px;font-weight:600;padding:9px 16px;border:1.5px solid #3A5268;border-radius:8px;color:#B9C6D0">Ver plataforma de la empresa →</a>
+</nav>
+
+<div style="display:grid;grid-template-columns:380px 1fr;gap:48px;max-width:1180px;margin:0 auto;padding:44px 32px 64px;align-items:start">
+  <aside style="position:sticky;top:32px">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#123A2E;border:1px solid #1E6B4F;border-radius:99px;padding:6px 13px;font-size:12.5px;font-weight:700;color:#7BC99E;margin-bottom:16px">
+      <span style="width:7px;height:7px;border-radius:99px;background:#25D366"></span>
+      Sin app · sin contraseña · sin computadora
+    </div>
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-size:30px;font-weight:800;line-height:1.15;margin:0 0 10px">Javier no entra a una plataforma. La plataforma le llega al chat.</h1>
+    <p style="font-size:14.5px;line-height:1.6;color:#8FA3B3;margin:0 0 24px;text-wrap:pretty">Toda la capacitación vive dentro de WhatsApp: audios, videos de simulación, preguntas y su constancia. Haz clic en cada paso o avanza desde el teléfono.</p>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <sc-for list="{{ pasos }}" as="p" hint-placeholder-count="6">
+        <button onClick="{{ p.ir }}" style="{{ p.estilo }}">
+          <span style="{{ p.numEstilo }}">{{ p.num }}</span>
+          <span style="flex:1;text-align:left"><span style="display:block;font-weight:700;font-size:14.5px">{{ p.titulo }}</span><span style="display:block;font-size:12.5px;opacity:.7;margin-top:2px;line-height:1.4">{{ p.desc }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin-top:22px;background:#16324A;border-radius:12px;padding:16px;font-size:13px;line-height:1.6;color:#B9C6D0"><strong style="color:#E89B2D">La ciencia detrás:</strong> {{ notaCiencia }}</div>
+    <div style="margin-top:12px;background:#123A2E;border:1px solid #1E6B4F;border-radius:12px;padding:16px;font-size:12.5px;line-height:1.6;color:#9FD7BC"><strong style="color:#7BC99E">Generado con IA:</strong> {{ notaIA }}</div>
+  </aside>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+
+    <div style="position:relative;width:392px;height:788px;background:#0B1622;color:#0E1D2B;border:11px solid #1B2B3B;border-radius:46px;box-shadow:0 34px 80px -24px rgba(0,0,0,.75),inset 0 0 0 2px #2A3F53;overflow:hidden;display:flex;flex-direction:column;flex-shrink:0">
+
+      <div style="background:#075E54;color:#fff;padding:9px 22px 4px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:700;flex-shrink:0">
+        <span>{{ relojFrame }}</span>
+        <span style="letter-spacing:2px;font-size:11px">▮▮▮ ⌁ 84%</span>
+      </div>
+
+      <div style="background:#075E54;color:#fff;padding:8px 14px 12px;display:flex;align-items:center;gap:11px;flex-shrink:0">
+        <span style="font-size:19px;opacity:.9">←</span>
+        <div style="width:38px;height:38px;border-radius:99px;background:#E89B2D;color:#0E1D2B;display:grid;place-items:center;font-weight:800;font-size:16px;font-family:'Bricolage Grotesque',sans-serif;flex-shrink:0">H</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:15.5px;display:flex;align-items:center;gap:5px">Hábil Capacitación <span style="font-size:11px;background:#25D366;color:#075E54;border-radius:99px;width:14px;height:14px;display:inline-grid;place-items:center;font-weight:800">✓</span></div>
+          <div style="font-size:12px;opacity:.85">{{ estadoChat }}</div>
+        </div>
+        <span style="font-size:15px;opacity:.85">📞</span>
+        <span style="font-size:17px;opacity:.85">⋮</span>
+      </div>
+
+      <div style="flex:1;min-height:0;display:flex;flex-direction:column-reverse;gap:9px;padding:14px 12px;overflow-y:auto;background-color:#EFE7DD;background-image:radial-gradient(circle at 1px 1px,rgba(14,29,43,.05) 1px,transparent 0);background-size:22px 22px">
+        <sc-for list="{{ mensajes }}" as="m" hint-placeholder-count="6">
+          <div style="{{ m.filaEstilo }}">
+
+            <sc-if value="{{ m.esSys }}">
+              <div style="background:#DCEFF5;border-radius:8px;padding:5px 12px;font-size:11.5px;color:#33586F;text-align:center;max-width:90%;line-height:1.4">{{ m.txt }}</div>
+            </sc-if>
+
+            <sc-if value="{{ m.esBurbuja }}">
+              <div style="{{ m.burbujaEstilo }}">
+
+                <sc-if value="{{ m.esAudio }}">
+                  <div style="display:flex;align-items:center;gap:10px;min-width:212px">
+                    <div style="width:34px;height:34px;border-radius:99px;background:{{ m.acento }};color:#fff;display:grid;place-items:center;font-size:13px;flex-shrink:0">▶</div>
+                    <div style="flex:1">
+                      <div style="display:flex;align-items:center;gap:2px;height:22px">
+                        <sc-for list="{{ m.onda }}" as="o" hint-placeholder-count="26">
+                          <span style="width:2.5px;border-radius:99px;height:{{ o.h }};background:{{ o.c }}"></span>
+                        </sc-for>
+                      </div>
+                      <div style="font-size:11px;color:#7C8B96;margin-top:3px">{{ m.dur }}</div>
+                    </div>
+                    <div style="width:26px;height:26px;border-radius:99px;background:{{ m.acento }};color:#fff;display:grid;place-items:center;font-size:11px;flex-shrink:0">🎧</div>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ m.esVideo }}">
+                  <div style="width:228px">
+                    <div style="position:relative;height:132px;border-radius:9px;overflow:hidden;background:linear-gradient(155deg,#28527A 0%,#16324A 55%,#0B1622 100%);display:grid;place-items:center">
+                      <div style="position:absolute;inset:0;background-image:linear-gradient(transparent 62%,rgba(232,155,45,.16) 62%,rgba(232,155,45,.16) 64%,transparent 64%),radial-gradient(circle at 74% 34%,rgba(232,155,45,.5),transparent 42%)"></div>
+                      <div style="position:relative;width:46px;height:46px;border-radius:99px;background:rgba(255,255,255,.94);display:grid;place-items:center;font-size:17px;color:#0E1D2B;box-shadow:0 4px 14px rgba(0,0,0,.35)">▶</div>
+                      <span style="position:absolute;left:8px;bottom:8px;background:rgba(11,22,34,.78);color:#fff;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:700">▶ {{ m.dur }}</span>
+                      <span style="position:absolute;right:8px;top:8px;background:rgba(232,155,45,.94);color:#0E1D2B;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:800;letter-spacing:.02em">SIMULACIÓN</span>
+                    </div>
+                    <div style="font-size:14px;line-height:1.45;margin-top:7px">{{ m.txt }}</div>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ m.esDoc }}">
+                  <div style="width:230px">
+                    <div style="display:flex;align-items:center;gap:10px;background:#F1EEE7;border-radius:9px;padding:11px">
+                      <div style="width:34px;height:40px;border-radius:5px;background:#C0392B;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:800;flex-shrink:0">PDF</div>
+                      <div style="min-width:0">
+                        <div style="font-size:13px;font-weight:700;line-height:1.3">{{ m.docNombre }}</div>
+                        <div style="font-size:11.5px;color:#7C8B96;margin-top:2px">{{ m.docMeta }}</div>
+                      </div>
+                    </div>
+                    <div style="font-size:14px;line-height:1.45;margin-top:7px">{{ m.txt }}</div>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ m.esTexto }}">
+                  <div style="font-size:14px;line-height:1.5">{{ m.txt }}</div>
+                </sc-if>
+
+                <sc-if value="{{ m.tieneLista }}">
+                  <div style="display:flex;flex-direction:column;gap:5px;margin-top:8px">
+                    <sc-for list="{{ m.lista }}" as="li" hint-placeholder-count="6">
+                      <div style="display:flex;gap:7px;font-size:13.5px;line-height:1.45"><span style="color:#075E54;font-weight:800">{{ li.n }}</span><span>{{ li.t }}</span></div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ m.tieneNota }}">
+                  <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(14,29,43,.09);font-size:11.5px;line-height:1.45;color:#7C8B96">{{ m.nota }}</div>
+                </sc-if>
+
+                <div style="{{ m.horaEstilo }}">{{ m.hora }}</div>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ hayOpciones }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#EFE7DD;padding:0 12px 8px;display:flex;flex-direction:column;gap:5px;flex-shrink:0">
+        <sc-for list="{{ opciones }}" as="op" hint-placeholder-count="3">
+          <button onClick="{{ op.elegir }}" style="{{ op.estilo }}">{{ op.txt }}</button>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ hayChips }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#EFE7DD;padding:0 12px 8px;flex-shrink:0">
+        <div style="background:#fff;border-radius:12px;padding:11px;box-shadow:0 1px 2px rgba(0,0,0,.1)">
+          <div style="font-size:11.5px;font-weight:700;color:#7C8B96;margin-bottom:8px;letter-spacing:.03em">SELECCIONA LO QUE APLIQUE</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+            <sc-for list="{{ intereses }}" as="i" hint-placeholder-count="10">
+              <button onClick="{{ i.alternar }}" style="{{ i.estilo }}">{{ i.txt }}</button>
+            </sc-for>
+          </div>
+          <button onClick="{{ terminarDiag }}" style="width:100%;background:#25D366;color:#fff;border:none;border-radius:9px;padding:11px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Instrument Sans',sans-serif">Enviar mis respuestas</button>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ pideVoz }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#EFE7DD;padding:0 12px 8px;flex-shrink:0">
+        <button onClick="{{ grabarVoz }}" style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;border:none;border-radius:99px;padding:14px;font-weight:700;font-size:14.5px;cursor:pointer;font-family:'Instrument Sans',sans-serif;box-shadow:0 4px 14px rgba(37,211,102,.4)">
+          <span style="font-size:17px">🎤</span> Mantén presionado para grabar
+        </button>
+        <div style="text-align:center;font-size:11px;color:#7C8B96;margin-top:6px">Tu respuesta hablada se transcribe y evalúa automáticamente</div>
+      </div>
+      </sc-if>
+
+      <div style="background:#F0F2F5;padding:9px 12px 14px;display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <div style="flex:1;background:#fff;border-radius:99px;padding:10px 14px;font-size:13.5px;color:#9AA6B0;display:flex;align-items:center;gap:8px">
+          <span style="font-size:15px">🙂</span> Escribe un mensaje
+          <span style="margin-left:auto;font-size:14px">📎</span>
+          <span style="font-size:14px">📷</span>
+        </div>
+        <div style="width:42px;height:42px;border-radius:99px;background:#25D366;color:#fff;display:grid;place-items:center;font-size:17px;flex-shrink:0">🎤</div>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:10px;width:392px">
+      <button onClick="{{ reiniciar }}" style="flex:1;background:transparent;border:1.5px solid #3A5268;color:#B9C6D0;border-radius:11px;padding:13px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Instrument Sans',sans-serif">↺ Repetir el recorrido</button>
+      <a href="Habil%20Plataforma.dc.html" style="flex:1;text-align:center;background:#E89B2D;color:#0E1D2B;border-radius:11px;padding:13px;font-weight:700;font-size:14px;box-shadow:0 2px 0 #B97914" style-hover="background:#F2AC44;color:#0E1D2B">Verlo como jefe →</a>
+    </div>
+
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { paso: 0, q: 0, sel: [], resp: null, voz: false };
+
+  renderVals() {
+    const S = this.state;
+
+    const pasosDef = [
+      { titulo: 'Alta por WhatsApp', desc: 'Sin app que instalar ni contraseña. Le llega al chat que ya usa todos los días.' },
+      { titulo: 'Diagnóstico en el chat', desc: 'Qué sabe ya (confianza vs. competencia) y qué le interesa: las anclas.' },
+      { titulo: 'Su plan, en un mensaje', desc: '6 microlecciones de 3–5 min, ordenadas por sus brechas reales.' },
+      { titulo: 'Microlección en audio', desc: 'Nota de voz con voz natural. La escucha durante su ronda, manos libres.' },
+      { titulo: 'Simulación en video', desc: 'Una escena real generada desde los manuales. Responde con botones y con su voz.' },
+      { titulo: 'Evidencia y DC-3', desc: 'Cada respuesta suma evidencia auditable. La constancia llega al mismo chat.' }
+    ];
+    const notas = [
+      'la fricción #1 del e-learning frontline no es el contenido, es el login. Aquí no hay ninguno.',
+      'medimos confianza además de aciertos — donde cree saber pero falla es donde más se refuerza.',
+      'el orden lo dictan sus brechas del diagnóstico, no un índice genérico.',
+      'escuchar deja las manos y los ojos libres: puede capacitarse durante el rondín, no después del turno.',
+      'ver una escena y decidir mide desempeño, no memoria. Es lo más cerca del trabajo real sin sacarlo del puesto.',
+      'la evidencia queda ligada al estándar EC0573: respuesta, audio, tiempo y fecha. Auditable ante la STPS.'
+    ];
+    const notasIA = [
+      'las plantillas normativas están validadas por humanos; la IA solo arma el envoltorio.',
+      'el diagnóstico alimenta el perfil que después personaliza analogías y ejemplos.',
+      'el orden del plan lo calcula el motor pedagógico, no un modelo suelto.',
+      'la voz se sintetiza con IA (tipo ElevenLabs) sobre el guion aprobado del Manual de control de accesos.',
+      'la escena se genera con IA de video (tipo Higgsfield) a partir de las consignas del cliente — mismo puesto, mismo uniforme, misma caseta.',
+      'nada de esto sustituye la validación humana: el contenido normativo y la rúbrica de evaluación las firma el capacitador certificado.'
+    ];
+
+    const interesesDef = ['⚽ Chivas', '⚽ Atlas', '🥊 Box', '🎵 Banda', '🎵 Cumbia', '🎮 Videojuegos', '🚚 Fui chofer', '🍳 Cocino', '👨‍👧 Tengo hijos', '🔧 Mecánica'];
+    const elegidos = S.sel.length ? S.sel : ['⚽ Chivas', '👨‍👧 Tengo hijos'];
+    const conChofer = elegidos.includes('🚚 Fui chofer') && !elegidos.includes('⚽ Chivas');
+    const ancla = conChofer ? 'retén de carretera' : 'filtro del Estadio Akron';
+    const leccionTitulo = conChofer
+      ? 'Tu punto de control es un retén de carretera: nadie avanza sin detenerse, identificarse y quedar registrado.'
+      : 'Tu punto de control es el filtro del Estadio Akron: nadie entra sin boleto, ni el que va cada jornada.';
+
+    const onda = (n, seed, prog, tono) => Array.from({ length: n }, (_, i) => {
+      const h = 4 + Math.abs(Math.sin((i + seed) * 1.9)) * 15;
+      return { h: h.toFixed(0) + 'px', c: (i / n) < prog ? tono : '#C7D0D6' };
+    });
+
+    const evalDef = [
+      { txt: 'Lo dejo pasar y registro su entrada después', ok: false, fb: 'Ahí se rompe el filtro. Si registras después, no hay evidencia de quién entró ni a qué hora — y el "después" casi nunca llega. Identificar → registrar → autorizar, siempre en ese orden.' },
+      { txt: 'Lo detengo, verifico identidad, registro y pido autorización', ok: true, fb: 'Exacto: identificar → registrar → autorizar. La cortesía no pelea con el protocolo — el filtro del estadio también saluda, pero nadie pasa sin boleto.' },
+      { txt: 'Le hablo al supervisor mientras el proveedor espera adentro', ok: false, fb: 'El error está en el "adentro". Consultar al supervisor está bien, pero el proveedor espera del lado exterior del control, nunca dentro del perímetro.' }
+    ];
+    const fb = S.resp !== null ? evalDef[S.resp] : null;
+
+    // ── Guion de la conversación, acumulativo por paso ───────────────────────
+    const M = [];
+    const sys = (txt) => M.push({ tipo: 'sys', txt });
+    const de = (o) => M.push({ tipo: 'in', ...o });
+    const yo = (o) => M.push({ tipo: 'out', ...o });
+
+    sys('🔒 Protec Occidente te dio de alta en Hábil');
+    de({ txt: '¡Hola Javier! 👋 Soy Hábil, tu capacitador. Tu empresa te inscribió al curso obligatorio de seguridad privada (LFSP).', hora: '10:02' });
+    de({ txt: 'Todo pasa aquí mismo, en WhatsApp: audios, videos y preguntas. No hay app que instalar ni contraseña que recordar.', hora: '10:02' });
+    de({ txt: 'Al terminar, tu constancia DC-3 se genera sola y le llega a tu jefe. ¿Empezamos con un diagnóstico corto?', hora: '10:03' });
+
+    if (S.paso >= 1) {
+      yo({ txt: 'Va, empezamos 💪', hora: '10:04' });
+      de({ txt: 'Perfecto. Primera pregunta para saber de dónde partimos 👇', hora: '10:04' });
+      de({ txt: 'Llega una persona sin gafete a tu punto de control. ¿Cuál es tu primera acción?', hora: '10:04' });
+      if (S.q >= 1) {
+        yo({ txt: 'Le pido que espere, verifico su identidad y registro su visita', hora: '10:05' });
+        de({ txt: '¿Qué tan seguro estás de esa respuesta? No hay respuesta mala: esto me dice dónde reforzarte.', hora: '10:05' });
+      }
+      if (S.q >= 2) {
+        yo({ txt: '💪 Totalmente seguro', hora: '10:06' });
+        de({ txt: 'Última: ¿qué te gusta o qué has hecho antes? Con eso te explico cada tema con TUS ejemplos, no con los de un manual.', hora: '10:06' });
+      }
+    }
+
+    if (S.paso >= 2) {
+      yo({ txt: elegidos.join('  ·  '), hora: '10:08' });
+      de({
+        txt: 'Listo. Con esto armé tu plan: 6 lecciones cortas, en el orden que TÚ necesitas.', hora: '10:08',
+        lista: [
+          { n: '1.', t: 'Control de accesos · 4 min — empezamos aquí, es tu brecha más grande' },
+          { n: '2.', t: 'Uso legítimo de la fuerza · 5 min' },
+          { n: '3.', t: 'Registro e informes · 3 min' },
+          { n: '4.', t: 'Primeros auxilios básicos · 5 min' },
+          { n: '5.', t: 'Manejo de crisis · 4 min' },
+          { n: '6.', t: 'Marco jurídico LFSP · 4 min — ya dominas parte, será más corto' }
+        ],
+        nota: 'Mismo estándar EC0573 para todos. Lo que cambia es el orden y los ejemplos.'
+      });
+      de({ txt: 'Cada lección te llega en audio 🎧 para que la escuches en tu ronda, sin dejar el puesto.', hora: '10:08' });
+    }
+
+    if (S.paso >= 3) {
+      yo({ txt: 'Órale, va', hora: '10:09' });
+      de({ tipo2: 'audio', dur: '3:40', prog: .62, seed: 2, hora: '10:09', nota: '🎧 Microlección 1 · Control de accesos — voz generada con IA sobre el guion aprobado' });
+      de({ txt: leccionTitulo, hora: '10:09', nota: 'En corto: identificar → registrar → autorizar. Siempre en ese orden, sin excepciones — ni para el "conocido de siempre".' });
+    }
+
+    if (S.paso >= 4) {
+      yo({ txt: 'Ya lo escuché ✓', hora: '10:14' });
+      de({ txt: 'Ahora la parte importante: mira esta escena de tu propia caseta y dime qué está mal 👇', hora: '10:14' });
+      de({ tipo2: 'video', dur: '0:42', txt: 'Un proveedor frecuente llega sin pase vehicular a la caseta de Torre Sur.', hora: '10:14', nota: 'Escena generada con IA a partir de las consignas de Protec Occidente · mismo puesto, mismo uniforme' });
+      if (S.resp !== null) {
+        yo({ txt: evalDef[S.resp].txt, hora: '10:16' });
+        de({ txt: (fb.ok ? '✓ ' : '⚠ ') + fb.fb, hora: '10:16' });
+        de({ txt: 'Ahora dímelo con tus palabras: ¿qué le dirías al proveedor en ese momento? Mándame una nota de voz 🎤', hora: '10:16' });
+      }
+      if (S.voz) {
+        yo({ tipo2: 'audio', dur: '0:18', prog: 1, seed: 7, hora: '10:17' });
+        de({
+          txt: '✓ Muy bien. Mencionaste identificar y registrar, y lo dijiste con cortesía. Te faltó pedir la autorización del área antes de dejarlo avanzar — es el tercer paso.', hora: '10:17',
+          nota: 'Transcripción y evaluación automáticas. Tu audio queda como evidencia en tu expediente de competencias.'
+        });
+      }
+    }
+
+    if (S.paso >= 5) {
+      yo({ txt: 'Entendido, gracias 🙏', hora: '10:18' });
+      de({ txt: '✓ Lección 1 completada. Llevas 12.5 de 20 horas. En 3 días te vuelvo a preguntar esto — así se te queda de verdad.', hora: '10:18' });
+      sys('— 3 semanas después —');
+      de({ txt: '¡Terminaste el temario, Javier! 🎉 Aquí está tu constancia oficial.', hora: '09:12' });
+      de({ tipo2: 'doc', docNombre: 'DC-3 Javier Mendoza · EC0573.pdf', docMeta: '1 página · PDF · 84 kB', txt: 'Tu jefe ya la tiene en el panel y quedó cargada en SIRCE.', hora: '09:12', nota: '20 h acreditadas · vigencia feb 2027 · agente capacitador HABIL-ACE-0117' });
+    }
+
+    const burbujas = M.map((m, i) => {
+      const mio = m.tipo === 'out';
+      const esSys = m.tipo === 'sys';
+      const t2 = m.tipo2 || 'texto';
+      return {
+        esSys,
+        esBurbuja: !esSys,
+        esTexto: !esSys && t2 === 'texto',
+        esAudio: t2 === 'audio',
+        esVideo: t2 === 'video',
+        esDoc: t2 === 'doc',
+        tieneLista: !!m.lista,
+        tieneNota: !!m.nota,
+        lista: m.lista || [],
+        nota: m.nota,
+        txt: m.txt,
+        dur: m.dur,
+        docNombre: m.docNombre,
+        docMeta: m.docMeta,
+        acento: mio ? '#4A9E8F' : '#075E54',
+        onda: t2 === 'audio' ? onda(26, m.seed || 0, m.prog || 0, mio ? '#4A9E8F' : '#075E54') : [],
+        hora: m.hora + (mio ? ' ✓✓' : ''),
+        filaEstilo: 'display:flex;justify-content:' + (esSys ? 'center' : mio ? 'flex-end' : 'flex-start'),
+        burbujaEstilo: 'max-width:86%;padding:9px 11px 7px;box-shadow:0 1px 1px rgba(0,0,0,.09);animation:pop .35s ease both;' +
+          (mio ? 'background:#D9FDD3;border-radius:12px 12px 3px 12px' : 'background:#fff;border-radius:12px 12px 12px 3px'),
+        horaEstilo: 'font-size:10.5px;margin-top:3px;text-align:right;color:' + (mio ? '#5AA05E' : '#8898A5')
+      };
+    });
+
+    // ── Acciones disponibles según el momento ───────────────────────────────
+    const btnChat = 'width:100%;background:#fff;border:none;border-radius:9px;padding:12px;font-weight:700;font-size:14px;color:#0A7C6A;cursor:pointer;font-family:Instrument Sans,sans-serif;box-shadow:0 1px 2px rgba(0,0,0,.12);text-align:center';
+    let opciones = [];
+    let hayChips = false, pideVoz = false;
+
+    if (S.paso === 0) {
+      opciones = [{ txt: 'Va, empezamos 💪', elegir: () => this.setState({ paso: 1, q: 0 }) }];
+    } else if (S.paso === 1) {
+      if (S.q === 0) {
+        opciones = [
+          'Le pido que espere, verifico su identidad y registro su visita',
+          'Lo dejo pasar si dice a quién viene a ver',
+          'Le pido que regrese con gafete'
+        ].map(txt => ({ txt, elegir: () => this.setState({ q: 1 }) }));
+      } else if (S.q === 1) {
+        opciones = ['🎲 La verdad, adiviné', '🤔 Creo que sí', '💪 Totalmente seguro'].map(txt => ({ txt, elegir: () => this.setState({ q: 2 }) }));
+      } else {
+        hayChips = true;
+      }
+    } else if (S.paso === 2) {
+      opciones = [{ txt: '▶ Escuchar lección 1 · 4 min', elegir: () => this.setState({ paso: 3 }) }];
+    } else if (S.paso === 3) {
+      opciones = [{ txt: 'Ya lo escuché ✓', elegir: () => this.setState({ paso: 4, resp: null, voz: false }) }];
+    } else if (S.paso === 4) {
+      if (S.resp === null) {
+        opciones = evalDef.map((o, i) => ({ txt: o.txt, elegir: () => this.setState({ resp: i }) }));
+      } else if (!S.voz) {
+        pideVoz = true;
+      } else {
+        opciones = [{ txt: 'Continuar →', elegir: () => this.setState({ paso: 5 }) }];
+      }
+    }
+
+    return {
+      pasos: pasosDef.map((p, i) => ({
+        ...p, num: String(i + 1),
+        ir: () => this.setState({ paso: i, q: i === 1 ? 0 : 2, resp: i > 4 ? 1 : null, voz: i > 4 }),
+        estilo: 'display:flex;gap:13px;align-items:flex-start;border-radius:12px;padding:12px 14px;cursor:pointer;font-family:Instrument Sans,sans-serif;border:1px solid ' + (S.paso === i ? '#E89B2D;background:#16324A;color:#F7F4EE' : 'transparent;background:transparent;color:#8FA3B3'),
+        numEstilo: 'width:26px;height:26px;border-radius:99px;display:grid;place-items:center;font-weight:800;font-size:12.5px;flex-shrink:0;' + (S.paso > i ? 'background:#1E6B4F;color:#fff' : S.paso === i ? 'background:#E89B2D;color:#0E1D2B' : 'background:#1D3A52;color:#8FA3B3')
+      })),
+      notaCiencia: notas[S.paso],
+      notaIA: notasIA[S.paso],
+      relojFrame: S.paso >= 5 ? '9:12' : '10:0' + Math.min(9, 2 + S.paso * 2),
+      estadoChat: pideVoz ? 'esperando tu nota de voz…' : 'en línea',
+      mensajes: burbujas.slice().reverse(),
+      hayOpciones: opciones.length > 0,
+      opciones: opciones.map(o => ({ ...o, estilo: btnChat })),
+      hayChips,
+      pideVoz,
+      grabarVoz: () => this.setState({ voz: true }),
+      intereses: interesesDef.map(txt => ({
+        txt,
+        alternar: () => this.setState(s => ({ sel: s.sel.includes(txt) ? s.sel.filter(x => x !== txt) : [...s.sel, txt] })),
+        estilo: 'border-radius:99px;padding:8px 12px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:Instrument Sans,sans-serif;border:1.5px solid ' + (S.sel.includes(txt) ? '#25D366;background:#DCF8C6;color:#0A7C6A' : '#E4DFD4;background:#fff;color:#41505C')
+      })),
+      terminarDiag: () => this.setState({ paso: 2 }),
+      reiniciar: () => this.setState({ paso: 0, q: 0, sel: [], resp: null, voz: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -18,9 +18,9 @@ a{color:#0E1D2B;text-decoration:none}a:hover{color:#B97914}
 </helmet>
 <div style="display:flex;min-height:100vh" data-screen-label="Plataforma empresa">
 <aside style="width:232px;background:#0E1D2B;color:#B9C6D0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;box-sizing:border-box;padding:20px 14px;flex-shrink:0">
-  <a href="EDUCAP%20Landing.dc.html" style="display:flex;align-items:center;gap:10px;padding:6px 10px;margin-bottom:26px;color:#F7F4EE" style-hover="color:#E89B2D">
-    <div style="width:28px;height:28px;background:#E89B2D;border-radius:8px;display:grid;place-items:center;color:#0E1D2B;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px">E</div>
-    <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;letter-spacing:.02em">EDUCAP</span>
+  <a href="Habil%20Landing.dc.html" style="display:flex;align-items:center;gap:10px;padding:6px 10px;margin-bottom:26px;color:#F7F4EE" style-hover="color:#E89B2D">
+    <div style="width:28px;height:28px;background:#E89B2D;border-radius:8px;display:grid;place-items:center;color:#0E1D2B;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px">H</div>
+    <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:18px;letter-spacing:.02em">Hábil</span>
   </a>
   <div style="display:flex;flex-direction:column;gap:4px">
     <sc-for list="{{ navItems }}" as="nv" hint-placeholder-count="4">
@@ -161,6 +161,25 @@ a{color:#0E1D2B;text-decoration:none}a:hover{color:#B97914}
             </div>
           </div>
           <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <div style="font-weight:700;font-size:15px">Evidencia capturada en WhatsApp</div>
+              <span style="background:#DCEFE6;color:#1E6B4F;border-radius:99px;padding:4px 10px;font-size:11.5px;font-weight:700">Auditable</span>
+            </div>
+            <div style="font-size:12.5px;color:#5C6B78;margin-bottom:14px;line-height:1.5">Cada respuesta queda con fecha, hora y reactivo asociado al estándar. Es lo que se presenta ante inspección STPS o verificación de competencias.</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ sel.evidencia }}" as="ev" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 13px;background:#FBF9F4;border:1px solid #EFEAE0;border-radius:10px">
+                  <span style="width:30px;height:30px;border-radius:8px;background:{{ ev.bg }};display:grid;place-items:center;font-size:14px;flex-shrink:0">{{ ev.icono }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13.5px;font-weight:600">{{ ev.que }}</span>
+                    <span style="display:block;font-size:12px;color:#5C6B78;margin-top:1px">{{ ev.cuando }}</span>
+                  </span>
+                  <span style="font-size:12.5px;font-weight:700;color:{{ ev.color }};white-space:nowrap">{{ ev.resultado }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;padding:22px">
             <div style="font-weight:700;font-size:15px;margin-bottom:6px">Confianza vs. competencia</div>
             <div style="font-size:12.5px;color:#5C6B78;margin-bottom:14px">Dónde cree saber pero falla — ahí se concentra el refuerzo espaciado.</div>
             <div style="display:flex;flex-direction:column;gap:10px">
@@ -184,7 +203,7 @@ a{color:#0E1D2B;text-decoration:none}a:hover{color:#B97914}
   <div style="padding:26px 28px;display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:start" data-screen-label="DC-3 y SIRCE">
     <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;overflow:hidden">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid #EFEAE0">
-        <div><div style="font-weight:700;font-size:15px">Cola de emisión DC-3</div><div style="font-size:12.5px;color:#5C6B78;margin-top:2px">Agente capacitador externo · Reg. STPS EDUCAP-ACE-0117</div></div>
+        <div><div style="font-weight:700;font-size:15px">Cola de emisión DC-3</div><div style="font-size:12.5px;color:#5C6B78;margin-top:2px">Agente capacitador externo · Reg. STPS HABIL-ACE-0117</div></div>
         <button onClick="{{ emitirTodas }}" style="{{ emitirEstilo }}">{{ emitirLabel }}</button>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1.6fr 1fr 1.3fr;padding:10px 22px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8898A5;border-bottom:1px solid #EFEAE0">
@@ -209,7 +228,7 @@ a{color:#0E1D2B;text-decoration:none}a:hover{color:#B97914}
           <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Ocupación (SINCO)</span><span style="font-weight:700">Guardia de seguridad 5311</span></div>
           <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Curso</span><span style="font-weight:700;text-align:right">Vigilancia y protección<br>(EC0573) · 20 h</span></div>
           <div style="display:flex;justify-content:space-between;border-bottom:1px solid #EFEAE0;padding-bottom:8px"><span style="color:#5C6B78">Periodo</span><span style="font-weight:700">02 may – 28 jun 2026</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#5C6B78">Agente capacitador</span><span style="font-weight:700">EDUCAP-ACE-0117</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#5C6B78">Agente capacitador</span><span style="font-weight:700">HABIL-ACE-0117</span></div>
         </div>
       </div>
       <div style="background:#0E1D2B;color:#F7F4EE;border-radius:16px;padding:22px">
@@ -219,43 +238,81 @@ a{color:#0E1D2B;text-decoration:none}a:hover{color:#B97914}
           <div style="display:flex;justify-content:space-between"><span style="color:#8FA3B3">Constancias en el periodo</span><span style="font-weight:600">{{ sirceTotal }}</span></div>
           <div style="display:flex;justify-content:space-between"><span style="color:#8FA3B3">Estado</span><span style="font-weight:700;color:#7BC99E">{{ sirceEstado }}</span></div>
         </div>
-        <div style="margin-top:14px;background:#16324A;border-radius:10px;padding:12px;font-size:12.5px;color:#B9C6D0;line-height:1.5">El expediente auditable por trabajador queda listo para inspección STPS o verificación SSPC en un clic.</div>
+        <div style="margin-top:14px;background:#16324A;border-radius:10px;padding:12px;font-size:12.5px;color:#B9C6D0;line-height:1.5">Cada constancia va respaldada por su evidencia: audios escuchados, simulaciones resueltas y respuestas de voz con fecha y hora. Listo para inspección STPS o verificación SSPC en un clic.</div>
       </div>
     </div>
   </div>
   </sc-if>
 
   <sc-if value="{{ esDocs }}" hint-placeholder-val="{{ false }}">
-  <div style="padding:26px 28px;display:grid;grid-template-columns:1fr 1.6fr;gap:16px;align-items:start" data-screen-label="Manuales y protocolos">
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="background:#fff;border:2px dashed #C9BFA9;border-radius:16px;padding:32px;text-align:center">
-        <div style="width:52px;height:52px;border-radius:14px;background:#EDE7DA;display:grid;place-items:center;margin:0 auto 14px;font-size:22px">📄</div>
-        <div style="font-weight:700;font-size:15px;margin-bottom:6px">Sube tus manuales y protocolos</div>
-        <div style="font-size:13px;color:#5C6B78;line-height:1.5;margin-bottom:16px">PDF, DOCX · La IA los convierte en microlecciones alineadas a tus procedimientos. Aislamiento total por cliente; tus datos nunca entrenan modelos.</div>
-        <button onClick="{{ subirDoc }}" style="background:#0E1D2B;color:#F7F4EE;border:none;border-radius:9px;padding:11px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Instrument Sans',sans-serif">Seleccionar archivo</button>
-      </div>
-      <div style="background:#DCEFE6;border:1px solid #BFE0D0;border-radius:16px;padding:18px;display:flex;gap:12px">
-        <span style="font-size:18px">🔒</span>
-        <div style="font-size:12.5px;color:#1E4D3B;line-height:1.55"><strong>Seguridad por diseño.</strong> Cifrado en tránsito y reposo, aislamiento por cliente, cumplimiento LFPDPPP y ruta a SOC 2 Tipo I. Tus protocolos jamás salen de tu instancia.</div>
+  <div style="padding:26px 28px;display:flex;flex-direction:column;gap:16px" data-screen-label="Manuales y protocolos">
+
+    <div style="background:#0E1D2B;color:#F7F4EE;border-radius:16px;padding:22px 24px">
+      <div style="font-weight:700;font-size:15px;margin-bottom:4px">De tu manual al WhatsApp de tu guardia</div>
+      <div style="font-size:13px;color:#8FA3B3;margin-bottom:18px">Tú subes la documentación una vez. Todo lo que recibe el trabajador se genera desde ahí — nunca de contenido genérico.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+        <sc-for list="{{ pipeline }}" as="pl" hint-placeholder-count="4">
+          <div style="background:#16324A;border-radius:12px;padding:14px;position:relative">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+              <span style="width:22px;height:22px;border-radius:99px;background:{{ pl.bg }};color:{{ pl.fg }};display:grid;place-items:center;font-size:11px;font-weight:800;flex-shrink:0">{{ pl.n }}</span>
+              <span style="font-weight:700;font-size:13px">{{ pl.titulo }}</span>
+            </div>
+            <div style="font-size:12px;line-height:1.5;color:#B9C6D0">{{ pl.texto }}</div>
+          </div>
+        </sc-for>
       </div>
     </div>
-    <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;overflow:hidden">
-      <div style="padding:18px 22px;border-bottom:1px solid #EFEAE0;font-weight:700;font-size:15px">Documentos de la empresa</div>
-      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
-        <div style="display:flex;gap:14px;align-items:center;padding:16px 22px;border-bottom:1px solid #F3F0E9">
-          <div style="width:40px;height:40px;border-radius:10px;background:#F1EEE7;display:grid;place-items:center;font-size:17px;flex-shrink:0">{{ d.icono }}</div>
-          <div style="flex:1;min-width:0">
-            <div style="font-weight:700;font-size:14px">{{ d.nombre }}</div>
-            <div style="font-size:12.5px;color:#5C6B78;margin-top:2px">{{ d.meta }}</div>
-            <sc-if value="{{ d.listo }}" hint-placeholder-val="{{ true }}">
-              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
-                <sc-for list="{{ d.temas }}" as="tg" hint-placeholder-count="3"><span style="background:#F1EEE7;border-radius:99px;padding:4px 10px;font-size:11.5px;font-weight:600;color:#5C6B78">{{ tg }}</span></sc-for>
-              </div>
-            </sc-if>
-          </div>
-          <span style="{{ d.estilo }}">{{ d.estado }}</span>
+
+    <div style="display:grid;grid-template-columns:1fr 1.75fr;gap:16px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:#fff;border:2px dashed #C9BFA9;border-radius:16px;padding:30px;text-align:center">
+          <div style="width:52px;height:52px;border-radius:14px;background:#EDE7DA;display:grid;place-items:center;margin:0 auto 14px;font-size:22px">📄</div>
+          <div style="font-weight:700;font-size:15px;margin-bottom:6px">Sube tus manuales y protocolos</div>
+          <div style="font-size:13px;color:#5C6B78;line-height:1.5;margin-bottom:16px">PDF, DOCX · De cada documento se generan las microlecciones, sus audios y las simulaciones en video. Aislamiento total por cliente; tus datos nunca entrenan modelos.</div>
+          <button onClick="{{ subirDoc }}" style="background:#0E1D2B;color:#F7F4EE;border:none;border-radius:9px;padding:11px 20px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Instrument Sans',sans-serif">Seleccionar archivo</button>
         </div>
-      </sc-for>
+        <div style="background:#FBEDD3;border:1px solid #EBD9AE;border-radius:16px;padding:18px;display:flex;gap:12px">
+          <span style="font-size:18px">👤</span>
+          <div style="font-size:12.5px;color:#7A5A1E;line-height:1.55"><strong>Validación humana obligatoria.</strong> Ningún audio ni simulación se publica sin que un capacitador certificado lo apruebe. Es lo que sostiene la constancia ante una inspección.</div>
+        </div>
+        <div style="background:#DCEFE6;border:1px solid #BFE0D0;border-radius:16px;padding:18px;display:flex;gap:12px">
+          <span style="font-size:18px">🔒</span>
+          <div style="font-size:12.5px;color:#1E4D3B;line-height:1.55"><strong>Seguridad por diseño.</strong> Cifrado en tránsito y reposo, aislamiento por cliente, cumplimiento LFPDPPP y ruta a SOC 2 Tipo I. Tus protocolos jamás salen de tu instancia.</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #E4DFD4;border-radius:16px;overflow:hidden">
+        <div style="padding:18px 22px;border-bottom:1px solid #EFEAE0;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:700;font-size:15px">Documentos de la empresa</span>
+          <span style="font-size:12.5px;color:#5C6B78">{{ totalActivos }}</span>
+        </div>
+        <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+          <div style="display:flex;gap:14px;align-items:flex-start;padding:16px 22px;border-bottom:1px solid #F3F0E9">
+            <div style="width:40px;height:40px;border-radius:10px;background:#F1EEE7;display:grid;place-items:center;font-size:17px;flex-shrink:0">{{ d.icono }}</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-weight:700;font-size:14px">{{ d.nombre }}</div>
+              <div style="font-size:12.5px;color:#5C6B78;margin-top:2px">{{ d.meta }}</div>
+              <sc-if value="{{ d.listo }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+                  <sc-for list="{{ d.temas }}" as="tg" hint-placeholder-count="3"><span style="background:#F1EEE7;border-radius:99px;padding:4px 10px;font-size:11.5px;font-weight:600;color:#5C6B78">{{ tg }}</span></sc-for>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;padding-top:10px;border-top:1px solid #F3F0E9">
+                  <sc-for list="{{ d.salidas }}" as="sa" hint-placeholder-count="3">
+                    <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#41505C"><span style="font-size:14px">{{ sa.icono }}</span>{{ sa.txt }}</span>
+                  </sc-for>
+                </div>
+                <div style="font-size:11.5px;color:#1E6B4F;margin-top:8px;font-weight:600">{{ d.validado }}</div>
+              </sc-if>
+              <sc-if value="{{ d.generando }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
+                  <div style="flex:1;height:6px;background:#EFEAE0;border-radius:99px;overflow:hidden;max-width:240px"><div style="height:100%;width:58%;background:#E89B2D;border-radius:99px;animation:pulse 1.2s infinite"></div></div>
+                  <span style="font-size:12px;color:#5C6B78">Extrayendo procedimientos · generando audios y simulaciones…</span>
+                </div>
+              </sc-if>
+            </div>
+            <span style="{{ d.estilo }}">{{ d.estado }}</span>
+          </div>
+        </sc-for>
+      </div>
     </div>
   </div>
   </sc-if>
@@ -305,17 +362,33 @@ class Component extends DCLogic {
       { id: 'dashboard', nombre: 'Cumplimiento', icono: '◉' },
       { id: 'trabajadores', nombre: 'Trabajadores', icono: '👥' },
       { id: 'dc3', nombre: 'DC-3 y SIRCE', icono: '🗎' },
-      { id: 'docs', nombre: 'Manuales (IA)', icono: '⬆' }
+      { id: 'docs', nombre: 'Contenido (IA)', icono: '⬆' }
     ];
-    const titulos = { dashboard: 'Panel de cumplimiento', trabajadores: S.sel ? 'Expediente del trabajador' : 'Trabajadores', dc3: 'Constancias DC-3 · SIRCE', docs: 'Manuales y protocolos' };
+    const titulos = { dashboard: 'Panel de cumplimiento', trabajadores: S.sel ? 'Expediente del trabajador' : 'Trabajadores', dc3: 'Constancias DC-3 · SIRCE', docs: 'Manuales, audios y simulaciones' };
     const emitLabels = ['Emitir 3 pendientes y cargar a SIRCE', 'Emitiendo constancias…', 'Cargando a SIRCE…', '✓ 3 emitidas y cargadas'];
     const estadoConst = S.emitiendo === 0 ? { txt: 'Pendiente', st: badge('warn') } : S.emitiendo === 3 ? { txt: '✓ En SIRCE', st: badge('ok') } : { txt: S.emitiendo === 1 ? 'Emitiendo…' : 'Cargando…', st: badge('proc') };
-    const docsBase = [
-      { nombre: 'Manual de control de accesos 2026.pdf', meta: '48 páginas · subido 12 may 2026', listo: true, icono: '📕', temas: ['Control de accesos', 'Gafetes y registro', 'Visitantes'] },
-      { nombre: 'Protocolo de uso de la fuerza.docx', meta: '22 páginas · subido 12 may 2026 · plantilla validada por humano ✓', listo: true, icono: '📘', temas: ['Uso legítimo de la fuerza', 'Escalamiento', 'Reporte de incidentes'] },
-      { nombre: 'Consignas Torre Sur.pdf', meta: '14 páginas · subido 28 may 2026', listo: true, icono: '📗', temas: ['Consignas por puesto', 'Rondines'] }
+    const salidas = (lec, aud, sim) => [
+      { icono: '📝', txt: lec + ' microlecciones' },
+      { icono: '🎧', txt: aud + ' audios (voz IA)' },
+      { icono: '🎬', txt: sim + ' simulaciones en video' }
     ];
-    const docs = [...docsBase, ...S.docsExtra.map(d => ({ nombre: d.nombre, meta: '31 páginas · subido hoy', listo: d.listo, icono: '📙', temas: ['Rondines nocturnos', 'Bitácora digital', 'Alertamiento'] }))].map(d => ({ ...d, estado: d.listo ? '✓ 6 microlecciones' : 'Procesando…', estilo: d.listo ? badge('ok') : badge('proc') }));
+    const docsBase = [
+      { nombre: 'Manual de control de accesos 2026.pdf', meta: '48 páginas · subido 12 may 2026', listo: true, icono: '📕', temas: ['Control de accesos', 'Gafetes y registro', 'Visitantes'], salidas: salidas(6, 6, 3), validado: '✓ Validado por Ing. R. Márquez (capacitador certificado) · 14 may 2026' },
+      { nombre: 'Protocolo de uso de la fuerza.docx', meta: '22 páginas · subido 12 may 2026', listo: true, icono: '📘', temas: ['Uso legítimo de la fuerza', 'Escalamiento', 'Reporte de incidentes'], salidas: salidas(5, 5, 4), validado: '✓ Validado por Ing. R. Márquez (capacitador certificado) · 15 may 2026' },
+      { nombre: 'Consignas Torre Sur.pdf', meta: '14 páginas · subido 28 may 2026', listo: true, icono: '📗', temas: ['Consignas por puesto', 'Rondines'], salidas: salidas(3, 3, 2), validado: '✓ Validado por Ing. R. Márquez (capacitador certificado) · 30 may 2026' }
+    ];
+    const docs = [...docsBase, ...S.docsExtra.map(d => ({
+      nombre: d.nombre, meta: '31 páginas · subido hoy', listo: d.listo, icono: '📙',
+      temas: ['Rondines nocturnos', 'Bitácora digital', 'Alertamiento'],
+      salidas: salidas(4, 4, 2), validado: '⏳ En espera de validación del capacitador certificado'
+    }))].map(d => ({
+      ...d,
+      generando: !d.listo,
+      estado: d.listo ? '✓ Publicado a WhatsApp' : 'Generando…',
+      estilo: d.listo ? badge('ok') : badge('proc')
+    }));
+    const totalDocs = docs.filter(d => d.listo);
+    const suma = (i) => totalDocs.reduce((a, d) => a + parseInt(d.salidas[i].txt, 10), 0);
     return {
       empresa: this.props.empresa ?? 'Protec Occidente S.A. de C.V.',
       tituloVista: titulos[S.vista],
@@ -351,6 +424,12 @@ class Component extends DCLogic {
           { nombre: 'Primeros auxilios', detalle: 'En curso · lección 4 de 6', icono: '▶', bg: '#E3ECF3', fg: '#33586F' },
           { nombre: 'Manejo de crisis y multitudes', detalle: 'Programado · jul 2026', icono: '·', bg: '#F1EEE7', fg: '#8898A5' }
         ],
+        evidencia: [
+          { icono: '🎧', bg: '#E3ECF3', que: 'Escuchó el audio completo · Control de accesos', cuando: '02 jun 2026, 10:09 · 3:40 min', resultado: '100%', color: '#1E6B4F' },
+          { icono: '🎬', bg: '#FBEDD3', que: 'Simulación en video · caseta vehicular', cuando: '02 jun 2026, 10:16 · reactivo EC0573-2', resultado: 'Correcta', color: '#1E6B4F' },
+          { icono: '🎤', bg: '#DCEFE6', que: 'Respuesta en nota de voz (transcrita)', cuando: '02 jun 2026, 10:17 · 0:18 min', resultado: '2 de 3', color: '#9A6A10' },
+          { icono: '🔁', bg: '#F1EEE7', que: 'Repaso espaciado · mismo tema', cuando: '05 jun 2026, 09:40 · a los 3 días', resultado: 'Correcta', color: '#1E6B4F' }
+        ],
         brechas: [
           { tema: 'Registro de visitantes', conf: 90, comp: 88 },
           { tema: 'Niveles de uso de la fuerza', conf: 85, comp: 52 },
@@ -370,7 +449,14 @@ class Component extends DCLogic {
       sirceTotal: S.emitiendo === 3 ? '46' : '43',
       sirceEstado: '● Conectado',
       subirDoc: () => this.subir(),
-      docs
+      docs,
+      totalActivos: suma(0) + ' microlecciones · ' + suma(1) + ' audios · ' + suma(2) + ' simulaciones activas',
+      pipeline: [
+        { n: '1', titulo: 'Subes el documento', texto: 'Manual, protocolo o consigna por puesto. Solo tú lo ves.', bg: '#E89B2D', fg: '#0E1D2B' },
+        { n: '2', titulo: 'Se extraen procedimientos', texto: 'La IA identifica los pasos obligatorios y los mapea al estándar EC0573.', bg: '#E89B2D', fg: '#0E1D2B' },
+        { n: '3', titulo: 'Se genera el material', texto: 'Microlección, audio con voz natural y video de simulación con tu puesto y tu uniforme.', bg: '#E89B2D', fg: '#0E1D2B' },
+        { n: '4', titulo: 'Valida y se publica', texto: 'Tu capacitador certificado aprueba y sale al WhatsApp de cada trabajador.', bg: '#1E6B4F', fg: '#fff' }
+      ]
     };
   }
 }
